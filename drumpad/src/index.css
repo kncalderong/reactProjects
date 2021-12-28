@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Imperial+Script&family=Lobster&family=Montserrat:wght@300&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  height: 100vh;
+  width: 100vh;
+  font-family: "Lobster", cursive;
+  font-size: 1.5em;
+}
+#app {
+  background-color: #1abc9c;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#drum-machine {
+  width: 620px;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+}
+.box {
+  width: 90px;
+  height: 90px;
+  background-color: #f1c40f;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1.5px solid #333;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+  border-radius: 4px;
+  cursor: pointer;
+}
+.box.active {
+  opacity: 0.75;
+  transform: scale(0.93);
+}
+#pad-bank {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+}
+#controls {
+  padding-top: 26px;
+}
+#controls p {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+.select {
+  height: 20px;
+  width: 50px;
+  margin: auto;
+  background-color: #333;
+  border-radius: 10px;
+  cursor: pointer;
+  display: relative;
+}
+.select-btn {
+  height: 20px;
+  background-color: #48dbfb;
+  width: 25px;
+  border-radius: 10px;
+}
+#display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+  background-color: #c8d6e5;
+  width: 200px;
+  margin: 20px auto 0 auto;
+  text-align: center;
+  font-size: 0.7em;
+}
+
+/********** Large devices only **********/
+@media (min-width: 1200px) {
+}
+
+/********** Medium devices only **********/
+@media (min-width: 992px) and (max-width: 1199px) {
+}
+
+/********** Small devices only **********/
+@media (min-width: 768px) and (max-width: 991px) {
+}
+
+/********** Extra small devices only **********/
+@media (max-width: 767px) {
+  #drum-machine {
+    width: 320px;
+    background-color: #fff;
+    padding-left: 10px;
+    padding-bottom: 15px;
+  }
+  #controls {
+    padding-top: 0;
+  }
+  #controls p {
+    margin-top: 10px;
+  }
+}
+
+/********** Super extra small devices Only :-) (e.g., iPhone 4) **********/
+@media (max-width: 600px) {
+}
