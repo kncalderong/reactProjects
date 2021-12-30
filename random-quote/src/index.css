@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.5em;
+  line-height: 1.4;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#quote-box {
+  position: relative;
+  height: auto;
+  display: table;
+}
+#container {
+  position: relative;
+  width: 100vw;
+  padding: 0 12vw;
+  z-index: 2;
+  transition: all 0.3s linear;
+}
+.quoteText {
+  background-color: #fff;
+  clear: both;
+  text-align: center;
+  font-size: 1.3em;
+  font-weight: 595;
+  padding: 0 4vw;
+}
+.quoteAuthor {
+  background-color: #fff;
+  padding-top: 20px;
+  padding-right: 20px;
+  text-align: right;
+  font-size: 0.9em;
+}
+.buttons {
+  position: relative;
+  margin-top: 5vw;
+  background-color: #83b420;
+}
+#tweet-quote {
+  float: left;
+}
+#tweet-icon {
+  height: 80px;
+}
+#new-quote {
+  float: right;
+  height: 65px;
+  margin-top: 8px;
+  padding: 8px 18px;
+  font-size: 0.8em;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
