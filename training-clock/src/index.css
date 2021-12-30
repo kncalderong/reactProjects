@@ -1,0 +1,142 @@
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Courgette&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Abril Fatface", cursive;
+  background-color: #95afc0;
+}
+input,
+button,
+submit {
+  border: none;
+}
+#app {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  background-color: #fff;
+  width: 450px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+}
+.container h1 {
+  text-align: center;
+  font-weight: 20;
+  margin: 20px auto 35px auto;
+  padding-bottom: 2px;
+  border-bottom: double black;
+  width: 250px;
+}
+.length-control {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 25px;
+}
+.session,
+.break {
+  width: 180px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.session p,
+.break p {
+  width: 100%;
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+button,
+.session div,
+.break div {
+  font-size: 1.5em;
+  width: 60px;
+  display: flex;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  background-color: #a3cb38;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+}
+.btn.active {
+  opacity: 0.8;
+  transform: scale(0.93);
+}
+
+.control-display {
+  width: 180px;
+  margin: 0 auto 20px auto;
+}
+.display {
+  border: solid 3px;
+  border-radius: 15px;
+  padding: 5px;
+  border-color: rgba(0, 0, 0, 0.7);
+}
+.display p {
+  font-size: 1.4em;
+  text-align: center;
+}
+.time {
+  font-size: 2.5em;
+  text-align: center;
+}
+.buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+.start-pause,
+.reset {
+  font-size: 1.3em;
+  width: 60px;
+  display: flex;
+  height: 60px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+/********** Large devices only **********/
+@media (min-width: 1200px) {
+}
+
+/********** Medium devices only **********/
+@media (min-width: 992px) and (max-width: 1199px) {
+}
+
+/********** Small devices only **********/
+@media (min-width: 768px) and (max-width: 991px) {
+}
+
+/********** Extra small devices only **********/
+@media (max-width: 767px) {
+}
+
+/********** Super extra small devices Only :-) (e.g., iPhone 4) **********/
+@media (max-width: 600px) {
+  .container {
+    width: 305px;
+  }
+  .length-control {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  .session,
+  .break {
+    margin-bottom: 20px;
+  }
+}
