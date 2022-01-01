@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Michroma", sans-serif;
+}
+.container {
+  text-align: center;
+  position: relative;
+  padding-top: 3rem;
+}
+#scatterplot {
+  margin-top: 50px;
+}
+
+#tooltip {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  min-height: 50px;
+  padding: 2px;
+  text-align: center;
+  font-size: 0.7em;
+  background: lightsteelblue;
+  box-shadow: 1px 1px 10px;
+  border-radius: 2px;
+  pointer-events: none;
+  position: absolute;
+}
