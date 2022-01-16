@@ -30,7 +30,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="flex bg-gray-50 md:flex-row flex-col h-screen transaction-height duration-75 ease-out">
+    <div className="flex bg-gray-50 md:flex-row flex-col h-screen transition-height duration-75 ease-out">
       {/*this is to handle two sidebar: hidden in mobile, but showed on big screen*/}
       <div className="hidden md:flex h-screen flex-initial">
         {/* the handle close functionality is only passed to sidebar mobile screen*/}
