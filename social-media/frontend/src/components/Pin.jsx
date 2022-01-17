@@ -112,7 +112,9 @@ const Pin = ({ pin }) => {
                   {/* {destination.length > 20
                     ? destination.slice(8, 20)
                     : destination.slice(8)} */}
-                  url
+                  {destination.length > 15
+                    ? `${destination.slice(0, 15)}...`
+                    : destination}
                 </a>
               )}
               {postedBy?._id === user.googleId && (
