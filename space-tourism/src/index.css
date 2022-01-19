@@ -11,50 +11,58 @@
 body {
   color: #fff;
 }
-.heading-1 {
-  font-family: "Bellefair", serif;
-  font-size: 150px;
-  text-transform: uppercase;
-}
-.heading-2 {
-  font-family: "Bellefair", serif;
-  font-size: 80px;
-  text-transform: uppercase;
-}
-.heading-3 {
-  font-family: "Bellefair", serif;
-  font-size: 56px;
-  text-transform: uppercase;
-}
-.heading-4 {
-  font-family: "Bellefair", serif;
-  font-size: 32px;
-  text-transform: uppercase;
-}
-.heading-5 {
-  font-family: "Barlow Condensed", sans-serif;
-  font-size: 28px;
-  letter-spacing: 0.475em;
-  text-transform: uppercase;
-}
-.subHeading-1 {
-  font-family: "Bellefair", serif;
-  font-size: 28px;
-  text-transform: uppercase;
-}
-.subHeading-2 {
-  font-family: "Barlow Condensed", sans-serif;
-  font-size: 14px;
-  letter-spacing: 0.235em;
-  text-transform: uppercase;
-}
-.navText {
-  font-family: "Barlow Condensed", sans-serif;
-  font-size: 16px;
-  letter-spacing: 2.7px;
-  text-transform: uppercase;
-}
-.regularText {
-  font-family: "Barlow", sans-serif;
-  font-size: 15px;
+
+/*to add this components to the tailwind base*/
+@layer components {
+  .heading-1 {
+    font-family: "Bellefair", serif;
+    font-size: 150px;
+    text-transform: uppercase;
+  }
+  .heading-2 {
+    font-family: "Bellefair", serif;
+    font-size: 80px;
+    text-transform: uppercase;
+  }
+  .heading-3 {
+    font-family: "Bellefair", serif;
+    font-size: 56px;
+    text-transform: uppercase;
+  }
+  .heading-4 {
+    font-family: "Bellefair", serif;
+    font-size: 32px;
+    text-transform: uppercase;
+  }
+  .heading-5 {
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: 28px;
+    letter-spacing: 3.38px;
+    text-transform: uppercase;
+  }
+  .subHeading-1 {
+    font-family: "Bellefair", serif;
+    font-size: 28px;
+    text-transform: uppercase;
+  }
+  .subHeading-2 {
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.235em;
+    text-transform: uppercase;
+  }
+  .navText {
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: 16px;
+    letter-spacing: 2.7px;
+    text-transform: uppercase;
+  }
+  .regularText {
+    font-family: "Barlow", sans-serif;
+    font-size: 15px;
+  }
+  .navTablet {
+    background-color: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(16px);
+  }
 }

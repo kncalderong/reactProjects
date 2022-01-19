@@ -2,18 +2,50 @@ import React, { useState } from "react";
 import starLogo from "../assets/general/logo_home.svg";
 import { HiMenu } from "react-icons/hi";
 import { MdClose } from "react-icons/md";
+import { NavLink } from "react-router-dom";
+
+const menu = [
+  { name: "home", number: "00" },
+  { name: "destination", number: "01" },
+  { name: "crew", number: "02" },
+  { name: "technology", number: "03" },
+];
+
+const inactiveStyle = "subHeading-2 basis-1 grow flex justify-center";
+const activeStyle =
+  "subHeading-2 flex items-center border-b-white border-b-[3px] h-full";
 
 const Sidebar = () => {
   const [toggleSidebar, setToggleSidebar] = useState(false);
 
   return (
-    <div className=" w-full p-4 relative">
+    <div className=" w-full relative">
       {/*This is on the big screen */}
-      <div className="hidden sm:flex ">This is the navbar on bigscreen</div>
+      <div className="hidden md:flex ">
+        <div className="w-full pl-8 flex justify-between min-h-[96px] items-center">
+          <img src={starLogo} alt="star-logo" className=" w-[48px] h-[48px]" />
+
+          <div className="flex w-3/5 flex-row px-8 lg:max-w-[830px] max-w-[664px] h-full  items-center navTablet">
+            {menu.map((item, idx) => (
+              <div className="flex basis-1 grow justify-center items-center h-full">
+                <NavLink
+                  to={`/${item.name}`}
+                  className={({ isActive }) =>
+                    isActive ? activeStyle : inactiveStyle
+                  }
+                  key={idx}
+                >
+                  {item.name}
+                </NavLink>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
 
       {/*This is on small screen */}
-      <div className="flex sm:hidden flex-col relative w-full">
-        <nav className=" p-5 flex justify-between  ">
+      <div className="flex md:hidden flex-col relative w-full p-4">
+        <nav className=" py-5 flex justify-between  ">
           <img src={starLogo} alt="star-logo" className=" w-[40px] h-[40px]" />
           <HiMenu
             fontSize={40}
@@ -32,7 +64,7 @@ const Sidebar = () => {
           visibility: !toggleSidebar ? "hidden" : "visible",
         }}
       >
-        <div className="flex flex-row justify-end w-full p-5">
+        <div className="flex flex-row justify-end w-full py-5">
           <MdClose
             fontSize={40}
             style={{ color: "#d0d6f9" }}
