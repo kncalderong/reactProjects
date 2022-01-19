@@ -11,8 +11,6 @@ const Login = () => {
   const navigate = useNavigate();
   //this is the response of the google login api
   const responseGoogle = (res) => {
-    console.log(res);
-
     localStorage.setItem("user", JSON.stringify(res.profileObj));
     const { name, imageUrl, googleId } = res.profileObj;
     const doc = {

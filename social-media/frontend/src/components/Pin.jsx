@@ -16,7 +16,7 @@ const Pin = ({ pin }) => {
   //to check if the user already was saved
   //the double !! is to change that length to a boolean value
   const alreadySaved = !!save?.filter(
-    (item) => item.postedBy._id === user.googleId
+    (item) => item?.postedBy?._id === user?.googleId
   )?.length;
 
   const savePin = (id) => {
@@ -27,11 +27,11 @@ const Pin = ({ pin }) => {
         .insert("after", "save[-1]", [
           {
             _key: uuidv4(), //this set a random unique Id
-            userId: user.googleId,
+            userId: user?.googleId,
             postedBy: {
               //this is the reason why we look for "postedBy"
               _type: "postedBy",
-              _ref: user.googleId,
+              _ref: user?.googleId,
             },
           },
         ])
@@ -115,7 +115,7 @@ const Pin = ({ pin }) => {
                   ulr
                 </a>
               )}
-              {postedBy?._id === user.googleId && (
+              {postedBy?._id === user?.googleId && (
                 <button
                   onClick={(e) => {
                     e.stopPropagation();

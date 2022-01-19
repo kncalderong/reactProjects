@@ -6,7 +6,7 @@ import Spinner from "./Spinner";
 
 const Search = ({ searchTerm }) => {
   const [pins, setPins] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (searchTerm) {
@@ -25,7 +25,7 @@ const Search = ({ searchTerm }) => {
   }, [searchTerm]);
 
   return (
-    <div>      
+    <div>
       {loading && !pins && <Spinner message="Searching for pins ..." />}
 
       {pins && pins?.length !== 0 && <MasonryLayout pins={pins} />}
