@@ -6,6 +6,7 @@ module.exports = {
         spaceStrong: "#0b0d17",
         spaceMiddle: "#d0d6f9",
         spaceLighter: "#fff",
+        hoverColor: "rgba(151, 151, 151, 1)",
       },
     },
   },

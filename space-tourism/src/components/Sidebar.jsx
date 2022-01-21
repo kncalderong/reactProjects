@@ -11,9 +11,10 @@ const menu = [
   { name: "technology", number: "03" },
 ];
 
-const inactiveStyle = "subHeading-2 basis-1 grow flex justify-center";
+const inactiveStyle =
+  "subHeading-2 basis-1 grow flex justify-center lg:navText lg:toHoverNavbar";
 const activeStyle =
-  "subHeading-2 flex items-center border-b-white border-b-[3px] h-full";
+  "subHeading-2 flex items-center border-b-white border-b-[3px] h-full lg:navText";
 
 const Sidebar = () => {
   const [toggleSidebar, setToggleSidebar] = useState(false);
@@ -22,19 +23,25 @@ const Sidebar = () => {
     <div className=" w-full relative">
       {/*This is on the big screen */}
       <div className="hidden md:flex ">
-        <div className="w-full pl-8 flex justify-between min-h-[96px] items-center">
+        <div className="relative w-full pl-8 flex justify-between min-h-[96px] items-center">
           <img src={starLogo} alt="star-logo" className=" w-[48px] h-[48px]" />
+          <div className="hidden lg:inline absolute h-[1px] w-2/5 max-w-[473px] lineHome top-[50%] right-[55%] z-20"></div>
 
-          <div className="flex w-3/5 flex-row px-8 lg:max-w-[830px] max-w-[664px] h-full  items-center navTablet">
+          <div className="flex w-3/5 flex-row px-4 lg:px-[90px] lg:max-w-[830px] max-w-[664px] h-full  items-center navTablet">
             {menu.map((item, idx) => (
-              <div className="flex basis-1 grow justify-center items-center h-full">
+              <div
+                className="flex basis-1 grow justify-center items-center h-full"
+                key={idx}
+              >
                 <NavLink
-                  to={`/${item.name}`}
+                  to={`/${item.name === "home" ? "" : item.name}`}
                   className={({ isActive }) =>
                     isActive ? activeStyle : inactiveStyle
                   }
-                  key={idx}
                 >
+                  <span className="hidden lg:inline mr-2 font-bold">
+                    {item.number}
+                  </span>
                   {item.name}
                 </NavLink>
               </div>

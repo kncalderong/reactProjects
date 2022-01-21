@@ -65,4 +65,13 @@ body {
     background-color: rgba(255, 255, 255, 0.04);
     backdrop-filter: blur(16px);
   }
+  .lineHome {
+    background-color: rgba(151, 151, 151, 1);
+  }
+  .toHoverNavbar:hover {
+    border-bottom-color: rgba(151, 151, 151, 1);
+    border-bottom-width: 3px;
+    height: 100%;
+    align-items: center;
+  }
 }
