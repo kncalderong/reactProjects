@@ -30,12 +30,11 @@ const Home = () => {
         </div>
         <div className="text-center mt-[6rem] flex justify-center relative">
           <div
-            className="w-[150px] h-[150px] subHeading-2 text-black bg-white rounded-full flex justify-center items-center md:w-[242px] md:h-[242px] md:heading-4 lg:h-[274px] lg:w-[274px] lg:cursor-pointer relative  "
+            className="w-[150px] h-[150px] subHeading-2 text-black bg-white rounded-full flex justify-center items-center md:w-[242px] md:h-[242px] md:heading-4 lg:h-[274px] lg:w-[274px] lg:cursor-pointer relative hover:outline-[88px] hover:outline-hoverColor hover:outline toHoverExplore  "
             onClick={() => {
               navigate("/destination");
             }}
           >
-            {/* <div className="hidden lg:inline absolute top-0 left-0 h-[274px] w-[274px] rounded-full lg:cursor-pointer navTablet z-[-1] hover:w-[450px] hover:h-[450px] "></div> */}
             explore
           </div>
         </div>

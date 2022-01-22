@@ -16,6 +16,12 @@ const inactiveStyle =
 const activeStyle =
   "subHeading-2 flex items-center border-b-white border-b-[3px] h-full lg:navText";
 
+const inactiveStyleMobile =
+  "navText flex justify-start items-center  h-full w-full ";
+
+const activeStyleMobile =
+  "navText  flex justify-start items-center border-r-white border-r-[4px] h-full w-full";
+
 const Sidebar = () => {
   const [toggleSidebar, setToggleSidebar] = useState(false);
 
@@ -30,7 +36,7 @@ const Sidebar = () => {
           <div className="flex w-3/5 flex-row px-4 lg:px-[90px] lg:max-w-[830px] max-w-[664px] h-full  items-center navTablet">
             {menu.map((item, idx) => (
               <div
-                className="flex basis-1 grow justify-center items-center h-full"
+                className="flex  justify-center items-center h-[31px]"
                 key={idx}
               >
                 <NavLink
@@ -65,19 +71,38 @@ const Sidebar = () => {
         </nav>
       </div>
       <div
-        className="absolute right-0 top-0 fixed bg-slate-400 w-2/3 min-h-[667px] z-10 transition-all duration-200 ease-in p-4"
+        className="absolute right-0 top-0 fixed navTablet w-2/3 min-h-[667px] z-10 transition-all duration-200 ease-in pt-4 pl-4"
         style={{
           width: !toggleSidebar ? "0" : "66%",
           visibility: !toggleSidebar ? "hidden" : "visible",
         }}
       >
-        <div className="flex flex-row justify-end w-full py-5">
-          <MdClose
-            fontSize={40}
-            style={{ color: "#d0d6f9" }}
-            className="cursor-pointer"
-            onClick={() => setToggleSidebar(false)}
-          />
+        <div className="flex flex-col w-full h-full">
+          <div className="flex flex-row justify-end w-full py-5">
+            <MdClose
+              fontSize={40}
+              style={{ color: "#d0d6f9" }}
+              className="cursor-pointer"
+              onClick={() => setToggleSidebar(false)}
+            />
+          </div>
+          <div className="flex flex-col w-full pt-5 pl-5  mt-2 gap-4">
+            {menu.map((item, idx) => {
+              return (
+                <div className="flex  justify-start items-center w-full h-[31px] ">
+                  <NavLink
+                    to={`/${item.name === "home" ? "" : item.name}`}
+                    className={({ isActive }) => {
+                      return isActive ? activeStyleMobile : inactiveStyleMobile;
+                    }}
+                  >
+                    <span className="mr-2 font-bold">{item.number}</span>
+                    {item.name}
+                  </NavLink>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
