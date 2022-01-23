@@ -1,18 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import Sidebar from "../components/Sidebar";
 import { useNavigate } from "react-router-dom";
 
 const tabletStyle =
   "md:bg-[url('../public/home/background-home-tablet.jpg')] md:min-w-[768px] md:min-h-[1024px]";
 const desktopStyle =
-  "lg:bg-[url('../public/home/background-home-desktop.jpg')]  lg:bg-auto lg:bg-no-repeat lg:h-[900px] lg:min-h-[0px]";
+  "lg:bg-[url('../public/home/background-home-desktop.jpg')] lg:w-full ";
 
 const Home = () => {
   const navigate = useNavigate();
 
   return (
     <div
-      className={`min-h-[667px] w-full min-w-[375px]  bg-[url('../public/home/background-home-mobile.jpg')] bg-cover ${tabletStyle} ${desktopStyle}`}
+      className={`relative block min-h-[667px] w-screen h-screen min-w-[375px]  bg-[url('../public/home/background-home-mobile.jpg')] bg-cover ${tabletStyle} ${desktopStyle}overflow-hidden `}
     >
       <Sidebar className="animate-slide-in" />
       <div className="flex flex-col lg:flex-row justify-center lg:justify-around items-center w-full md:mt-[155px] lg:mt-[255px]">

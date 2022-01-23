@@ -12,7 +12,7 @@ const menu = [
 ];
 
 const inactiveStyle =
-  "subHeading-2 basis-1 grow flex justify-center lg:navText lg:toHoverNavbar";
+  "subHeading-2 flex justify-center lg:navText lg:toHoverNavbar";
 const activeStyle =
   "subHeading-2 flex items-center border-b-white border-b-[3px] h-full lg:navText";
 
@@ -26,7 +26,8 @@ const Sidebar = () => {
   const [toggleSidebar, setToggleSidebar] = useState(false);
 
   return (
-    <div className=" w-full relative">
+    //overflow-hidden right bellow
+    <div className=" w-full relative block ">
       {/*This is on the big screen */}
       <div className="hidden md:flex ">
         <div className="relative w-full pl-8 flex justify-between min-h-[96px] items-center">
@@ -36,7 +37,7 @@ const Sidebar = () => {
           <div className="flex w-3/5 flex-row px-4 lg:px-[90px] lg:max-w-[830px] max-w-[664px] h-full  items-center navTablet">
             {menu.map((item, idx) => (
               <div
-                className="flex  justify-center items-center h-[31px]"
+                className="flex grow basis-1  justify-center items-center h-[31px]"
                 key={idx}
               >
                 <NavLink
@@ -57,8 +58,8 @@ const Sidebar = () => {
       </div>
 
       {/*This is on small screen */}
-      <div className="flex md:hidden flex-col relative w-full p-4">
-        <nav className=" py-5 flex justify-between  ">
+      <div className="flex md:hidden flex-col relative w-full ">
+        <nav className=" py-5 flex justify-between px-4 ">
           <img src={starLogo} alt="star-logo" className=" w-[40px] h-[40px]" />
           <HiMenu
             fontSize={40}
@@ -70,23 +71,27 @@ const Sidebar = () => {
           />
         </nav>
       </div>
+
+      {/*this is the sidebar properly */}
       <div
-        className="absolute right-0 top-0 fixed navTablet w-2/3 min-h-[667px] z-10 transition-all duration-200 ease-in pt-4 pl-4"
+        className="absolute w-2/3 right-0 top-0  navTablet min-h-[667px] z-20 transition-all duration-200 ease-in "
         style={{
-          width: !toggleSidebar ? "0" : "66%",
+          // width: !toggleSidebar ? null : "66%",
           visibility: !toggleSidebar ? "hidden" : "visible",
+          // display: !toggleSidebar ? "none" : "",
+          transform: !toggleSidebar ? "translateX(100%)" : "translateX(0)",
         }}
       >
-        <div className="flex flex-col w-full h-full">
-          <div className="flex flex-row justify-end w-full py-5">
+        <div className="flex flex-col ">
+          <div className="flex flex-row justify-end w-full py-5 w-full">
             <MdClose
               fontSize={40}
               style={{ color: "#d0d6f9" }}
-              className="cursor-pointer"
+              className="cursor-pointer mr-4"
               onClick={() => setToggleSidebar(false)}
             />
           </div>
-          <div className="flex flex-col w-full pt-5 pl-5  mt-2 gap-4">
+          <div className="flex flex-col w-full pt-5  mt-2 gap-4">
             {menu.map((item, idx) => {
               return (
                 <div className="flex  justify-start items-center w-full h-[31px] ">
