@@ -5,17 +5,18 @@ import { useNavigate } from "react-router-dom";
 const tabletStyle =
   "md:bg-[url('../public/home/background-home-tablet.jpg')] md:min-w-[768px] md:min-h-[1024px]";
 const desktopStyle =
-  "lg:bg-[url('../public/home/background-home-desktop.jpg')] lg:w-full ";
+  "lg:bg-[url('../public/home/background-home-desktop.jpg')] lg:w-full lg:min-h-[900px] ";
 
 const Home = () => {
   const navigate = useNavigate();
 
   return (
+    // <div className="w-full bg-black text-white h-screen">Helloworld</div>
     <div
       className={`relative block min-h-[667px] w-screen h-screen min-w-[375px]  bg-[url('../public/home/background-home-mobile.jpg')] bg-cover ${tabletStyle} ${desktopStyle}overflow-hidden `}
     >
       <Sidebar className="animate-slide-in" />
-      <div className="flex flex-col lg:flex-row justify-center lg:justify-around items-center w-full md:mt-[155px] lg:mt-[255px]">
+      <div className="flex flex-col lg:flex-row justify-center lg:justify-around items-center w-full mt-[2.7rem] md:mt-[100px] lg:mt-[255px]">
         <div className="w-full px-8 md:max-w-[500px]  ">
           <p className="navText text-center text-spaceMiddle md:heading-5">
             so you want to travel to

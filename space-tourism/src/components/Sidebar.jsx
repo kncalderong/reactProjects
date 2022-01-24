@@ -91,7 +91,7 @@ const Sidebar = () => {
               onClick={() => setToggleSidebar(false)}
             />
           </div>
-          <div className="flex flex-col w-full pt-5  mt-2 gap-4">
+          <div className="flex flex-col w-full pt-5  mt-[2rem] gap-4 pl-[1.5rem]">
             {menu.map((item, idx) => {
               return (
                 <div className="flex  justify-start items-center w-full h-[31px] ">
