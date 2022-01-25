@@ -7,6 +7,7 @@ module.exports = {
         spaceMiddle: "#d0d6f9",
         spaceLighter: "#fff",
         hoverColor: "rgba(255, 255, 255, 0.1);",
+        obscureTone: "rgba(151, 151, 151, 1);",
       },
     },
   },
