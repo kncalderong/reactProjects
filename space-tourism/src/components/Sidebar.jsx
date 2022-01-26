@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import starLogo from "../assets/general/logo_home.svg";
 import { HiMenu } from "react-icons/hi";
 import { MdClose } from "react-icons/md";
@@ -74,7 +74,7 @@ const Sidebar = () => {
 
       {/*this is the sidebar properly */}
       <div
-        className="absolute w-2/3 right-0 top-0  navTablet min-h-[667px] z-20 transition-all duration-200 ease-in "
+        className={`absolute w-2/3 right-0 top-0  navTablet min-h-[100vh] z-20 transition-all duration-200 ease-in`}
         style={{
           // width: !toggleSidebar ? null : "66%",
           visibility: !toggleSidebar ? "hidden" : "visible",
@@ -94,7 +94,10 @@ const Sidebar = () => {
           <div className="flex flex-col w-full pt-5  mt-[2rem] gap-4 pl-[1.5rem]">
             {menu.map((item, idx) => {
               return (
-                <div className="flex  justify-start items-center w-full h-[31px] ">
+                <div
+                  className="flex  justify-start items-center w-full h-[31px] "
+                  key={idx}
+                >
                   <NavLink
                     to={`/${item.name === "home" ? "" : item.name}`}
                     className={({ isActive }) => {

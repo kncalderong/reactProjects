@@ -13,7 +13,7 @@ const Home = () => {
   return (
     // <div className="w-full bg-black text-white h-screen">Helloworld</div>
     <div
-      className={`relative block min-h-[667px] w-screen h-screen min-w-[375px]  bg-[url('../public/home/background-home-mobile.jpg')] bg-cover ${tabletStyle} ${desktopStyle}overflow-hidden `}
+      className={`relative block min-h-[667px] w-screen  min-w-[375px]  bg-[url('../public/home/background-home-mobile.jpg')] bg-cover ${tabletStyle} ${desktopStyle}overflow-hidden `}
     >
       <Sidebar className="animate-slide-in" />
       <div className="flex flex-col lg:flex-row justify-center lg:justify-around items-center w-full mt-[2.7rem] md:mt-[100px] lg:mt-[255px]">
