@@ -12,7 +12,7 @@ const Destination = () => {
       className={`relative block min-h-[667px] w-screen min-w-[375px]  bg-[url('../public/destination/background-destination-mobile.jpg')] bg-cover ${tabletStyle} ${desktopStyle} overflow-hidden `}
     >
       <Sidebar className="animate-slide-in" />
-      <div className="navText w-3/5 mx-auto text-center">
+      <div className="navText w-3/5 mx-auto text-center md:heading-5 md:text-[20px] md:mt-8 md:text-left md:w-full md:ml-8">
         <span className="mr-2 text-obscureTone font-bold">01</span>
         pick your destination
       </div>
@@ -21,16 +21,16 @@ const Destination = () => {
         <img
           src={process.env.PUBLIC_URL + "/destination/image-moon.png"}
           alt="destination"
-          className="w-[170px] h-[170px] p-4 "
+          className="w-[170px] h-[170px] p-4 md:w-[300px] md:h-[300px]"
         />
         {/*second section */}
-        <div className="flex flex-col items-center w-full p-4">
-          <div className="flex-col w-2/3  ">
+        <div className="flex flex-col items-center w-full p-4 md:mt-8">
+          <div className="flex-col w-2/3 md:max-w-[300px] ">
             <MenuDestinations />
           </div>
-          <div className="flex flex-col w-full items-center border-b-[#383b4b] border-b-[2px]">
-            <div className="heading-3 mt-1">Moon</div>
-            <div className="regularText leading-[25px] text-center mb-8">
+          <div className="flex flex-col w-full items-center border-b-[#383b4b] border-b-[2px] md:pb-8 md:max-w-[580px]">
+            <div className="heading-3 mt-1 md:heading-2">Moon</div>
+            <div className="regularText leading-[25px] text-center mb-8 md:text-[16px] md:leading-[28px] max-w-[575px]">
               See our planet as you’ve never seen it before. A perfect relaxing
               trip away to help regain perspective and come back refreshed.
               While you’re there, take in some history by visiting the Luna 2
@@ -39,7 +39,7 @@ const Destination = () => {
           </div>
         </div>
         {/*third section */}
-        <div className="flex flex-col w-full p-4">
+        <div className="flex flex-col w-full p-4 md:flex-row md:max-w-[580px] md:justify-evenly">
           <div className="flex flex-col  items-center mb-6">
             <div className="subHeading-2">avg. distance</div>
             <div className="subHeading-1 mt-2">384,400 km</div>
@@ -58,14 +58,14 @@ const MenuDestinations = ({ selected }) => {
   const places = ["Moon", "Mars", "Europa", "Titan"];
   const activeStyle = "border-b-white border-b-[3px]";
   return (
-    <div className="flex w-full h-[28px]">
+    <div className="flex w-full h-[28px] md:h-[34px]">
       {places.map((item, idx) => {
         return (
           <div
             className="grow  h-full flex justify-center items-start"
             key={idx}
           >
-            <div className="subHeading-2 h-full ">{item}</div>
+            <div className="subHeading-2 h-full md:navText">{item}</div>
           </div>
         );
       })}

@@ -37,7 +37,7 @@ const Sidebar = () => {
           <div className="flex w-3/5 flex-row px-4 lg:px-[90px] lg:max-w-[830px] max-w-[664px] h-full  items-center navTablet">
             {menu.map((item, idx) => (
               <div
-                className="flex grow basis-1  justify-center items-center h-[31px]"
+                className="flex grow basis-1  justify-center items-center h-full"
                 key={idx}
               >
                 <NavLink
