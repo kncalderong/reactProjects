@@ -29,7 +29,7 @@ const Sidebar = () => {
     //overflow-hidden right bellow
     <div className=" w-full relative block ">
       {/*This is on the big screen */}
-      <div className="hidden md:flex ">
+      <div className="hidden md:flex lg:mt-[40px] ">
         <div className="relative w-full pl-8 flex justify-between min-h-[96px] items-center">
           <img src={starLogo} alt="star-logo" className=" w-[48px] h-[48px]" />
           <div className="hidden lg:inline absolute h-[1px] w-2/5 max-w-[473px] lineHome top-[50%] right-[55%] z-20"></div>
