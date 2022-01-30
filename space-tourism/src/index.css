@@ -74,4 +74,10 @@ body {
     height: 100%;
     align-items: center;
   }
+  .imgHandler {
+    width: 100%;
+
+    display: block; /*to handle white spaces*/
+    object-fit: cover;
+  }
 }

@@ -8,7 +8,7 @@ const desktopStyle =
   "lg:bg-[url('../public/destination/background-destination-desktop.jpg')] lg:w-full lg:min-h-[900px] ";
 
 const Destination = () => {
-  const [selected, setSelected] = useState("Europa");
+  const [selected, setSelected] = useState("Moon");
   const [info, setInfo] = useState({});
   useEffect(() => {
     data.destinations.map((item) => {
@@ -48,7 +48,7 @@ const Destination = () => {
               <div className="heading-3 mt-1 md:heading-2 lg:heading-1 lg:mt-0 lg:text-[100px] ">
                 {info.name}
               </div>
-              <div className="regularText leading-[25px] text-center mb-8 md:text-[16px] md:leading-[28px] max-w-[575px] lg:text-[18px] lg:leading-[32px] lg:text-left lg:max-w-[445px]">
+              <div className="regularText leading-[25px] text-center text-textInfoTone mb-8 md:text-[16px] md:leading-[28px] max-w-[575px] lg:text-[18px] lg:leading-[32px] lg:text-left lg:max-w-[445px]">
                 {info.description}
               </div>
             </div>
