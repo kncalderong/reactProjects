@@ -16,6 +16,7 @@ const Crew = () => {
       if (item.name === selected) {
         setInfo(item);
       }
+      return null;
     });
   }, [selected]);
 
@@ -28,20 +29,36 @@ const Crew = () => {
         <span className="mr-2 text-obscureTone font-bold">02</span>
         meet your crew
       </div>
-      <div className="flex flex-col items-center w-full p-4 mt-[15px] md:flex-col-reverse md:py-0 lg:flex-row-reverse lg:w-[85%] lg:mx-auto lg:mt-0 lg:p-0">
+      <div className="flex flex-col items-center w-full p-4 mt-[15px] md:flex-col-reverse md:py-0 lg:flex-row-reverse lg:w-[85%] lg:mx-auto lg:mt-0 lg:p-0 lg:h-[700px] relative">
         {/* first section */}
-        <div className="w-full h-[223px] flex justify-center border-b-[1px] border-b-obscureTone md:h-[532px] md:border-b-0 lg:h-[700px] lg:justify-end">
+        <div
+          className={`w-full h-[223px] flex justify-center border-b-[1px] border-b-obscureTone md:h-[532px] md:border-b-0 lg:justify-end lg:min-h-[700px] lg:items-end`}
+        >
           <img
             src={
               process.env.PUBLIC_URL +
               `/crew/image-${selected.toLowerCase().split(" ").join("-")}.png`
             }
-            alt="Captiani"
-            className="h-full"
+            alt={`${selected}`}
+            className={`${
+              selected === "Douglas Hurley"
+                ? "lg:h-[700px]"
+                : selected === "Mark Shuttleworth"
+                ? "lg:h-[654px]"
+                : selected === "Victor Glover"
+                ? "lg:h-[680px]"
+                : selected === "Anousheh Ansari"
+                ? "lg:h-[607px]"
+                : null
+            } h-full`}
           />
         </div>
         {/* second section */}
-        <div className="flex flex-col w-full mt-[2rem] items-center md:max-w-[460px] md:flex-col-reverse md:mt-0 md:mb-[2rem] lg:max-w-[488px] lg:items-start">
+        <div
+          className={`flex flex-col w-full mt-[2rem] items-center md:max-w-[460px] md:flex-col-reverse md:mt-0 md:mb-[2rem] lg:max-w-[615px] lg:items-start ${
+            selected === "Mark Shuttleworth" && "lg:min-w-[614px]"
+          } lg:h-full lg:justify-around`}
+        >
           <MenuCrew selected={selected} setSelected={setSelected} />
           <div className="w-full flex flex-col items-center mt-[2rem] lg:items-start">
             <div className="subHeading-1 text-[16px] text-obscureTone md:text-[24px] lg:text-[32px]">
@@ -68,7 +85,7 @@ const MenuCrew = ({ selected, setSelected }) => {
     "Anousheh Ansari",
   ];
   return (
-    <div className="flex w-1/4 h-[10px] justify-between lg:w-1/3 lg:h-[15px] lg:mt-[120px]">
+    <div className="flex w-1/4 h-[10px] justify-between lg:w-1/3 lg:h-[15px]">
       {crew.map((item, idx) => {
         return (
           <div

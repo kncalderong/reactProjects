@@ -10,6 +10,12 @@ const desktopStyle =
 const Destination = () => {
   const [selected, setSelected] = useState("Moon");
   const [info, setInfo] = useState({});
+
+  //to always open on top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   useEffect(() => {
     data.destinations.map((item) => {
       if (item.name === selected) {
