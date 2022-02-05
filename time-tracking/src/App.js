@@ -25,7 +25,13 @@ function App() {
           <div className="categories">
             {categories.map((item, idx) => {
               return (
-                <div className="category" key={idx}>
+                <div
+                  className={`category ${
+                    item === category && "category-active"
+                  }`}
+                  key={idx}
+                  onClick={() => setCategory(item)}
+                >
                   {item}
                 </div>
               );
@@ -33,15 +39,16 @@ function App() {
           </div>
         </div>
         {data.map((item, idx) => {
-          return <Item key={idx} info={item} />;
+          return <Item key={idx} info={item} category={category} />;
         })}
       </div>
     </div>
   );
 }
 
-const Item = ({ info }) => {
+const Item = ({ info, category }) => {
   const nameItem = info.title.toLowerCase().split(" ")[0];
+  console.log(info.timeframes[category]);
   return (
     <div className={`item ${nameItem} `}>
       <img
@@ -49,7 +56,30 @@ const Item = ({ info }) => {
         alt=""
         className="item-icon"
       />
-      <div className="item-info">{info.title}</div>
+      <div className="item-info">
+        <div className="item-header">
+          {info.title}
+          <img
+            src={process.env.PUBLIC_URL + "/images/icon-ellipsis.svg"}
+            alt="menu-icon"
+            className="item-menu"
+          />
+        </div>
+        <div className="item-time">
+          <div className="time">{`${info.timeframes[category].current}hrs`}</div>
+          <div className="last-time">
+            {`Last ${
+              category === "weekly"
+                ? "Week"
+                : category === "daily"
+                ? "Day"
+                : category === "monthly"
+                ? "Month"
+                : null
+            } - ${info.timeframes[category].previous}hrs`}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

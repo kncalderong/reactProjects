@@ -3,8 +3,8 @@
 Global Styles 
 ======
 */
-@import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
-
+/* @import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400&display=swap");
 *,
 ::after,
 ::before {
@@ -38,6 +38,7 @@ body {
   --white: #fff;
   --very-dark-blue: hsl(226, 43%, 10%);
   --dark-blue: hsl(235, 46%, 20%);
+  --intermediate-blue: #4e538c;
   --desaturated-blue: hsl(235, 45%, 61%);
   --pale-blue: hsl(236, 100%, 87%);
 
@@ -81,7 +82,6 @@ Home
 }
 .grid-container {
   display: grid;
-
   background-color: var(--very-dark-blue);
   gap: 25px;
   grid-template-columns: repeat(4, 200px);
@@ -166,8 +166,35 @@ Home
   border-radius: var(--borderRadius) 0;
   position: absolute;
   z-index: 10;
+  padding: 25px;
+  cursor: pointer;
 }
-
+.item-info:hover {
+  background-color: var(--intermediate-blue);
+}
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  align-items: baseline;
+}
+.item-menu {
+  height: 5px;
+  width: 21px;
+}
+.item-time {
+  margin-top: 1.3rem;
+}
+.time {
+  font-size: 2.2rem;
+  font-weight: 100;
+}
+.last-time {
+  font-size: 0.7rem;
+  color: var(--pale-blue);
+  margin-top: 0.6rem;
+  font-weight: 600;
+}
 .work {
   background: linear-gradient(to bottom, var(--light-orange) 50%, black);
 }
@@ -185,4 +212,46 @@ Home
 }
 .self {
   background: linear-gradient(to bottom, var(--soft-orange) 50%, black);
+}
+/* 
+====== 
+Responsive Styles 
+======
+*/
+
+/********** Medium devices only **********/
+@media (min-width: 768px) and (max-width: 1024px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 200px);
+    grid-template-rows: repeat(4, 200px);
+    grid-template-areas:
+      "user work"
+      "user exercise"
+      "play study"
+      "social self";
+  }
+}
+
+/********** Small devices only **********/
+@media (max-width: 767px) {
+  .container {
+    align-items: start;
+    height: 100%;
+  }
+  .grid-container {
+    width: 80%;
+    max-width: 400px;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: 250px repeat(6, 180px);
+    grid-template-areas:
+      "user"
+      "work"
+      "play"
+      "study"
+      "exercise"
+      "social"
+      "self";
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+  }
 }
