@@ -19,8 +19,10 @@ function App() {
                 className="img"
               />
             </div>
-            <div className="report">report for</div>
-            <div className="name">jeremy robson</div>
+            <div className="report-container">
+              <div className="report">report for</div>
+              <div className="name">jeremy robson</div>
+            </div>
           </div>
           <div className="categories">
             {categories.map((item, idx) => {
