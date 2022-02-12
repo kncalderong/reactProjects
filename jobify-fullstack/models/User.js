@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import validator from "validator"
+import validator from "validator";
 
 dotenv.config();
 
@@ -15,11 +15,11 @@ const UserSchema = new mongoose.Schema({
   email: {
     type: String,
     required: [true, "please provide an email"],
-    validate:{
+    validate: {
       //this validator function comes from an external package
-      validator:validator.isEmail,
-      message:"Please provide a valid email"
-    }
+      validator: validator.isEmail,
+      message: "Please provide a valid email",
+    },
     unique: true,
   },
   password: {
