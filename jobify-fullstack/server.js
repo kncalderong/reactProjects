@@ -6,10 +6,10 @@ import connectDB from "./db/connect.js";
 import authRouter from "./routes/authRoutes.js";
 import jobsRouter from "./routes/jobsRoutes.js";
 import cors from "cors";
-import "express-async-errors";
 
 dotenv.config();
 const app = express();
+import "express-async-errors";
 
 //middleware to load req.body data
 app.use(express.json());
