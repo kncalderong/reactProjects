@@ -57,12 +57,12 @@ UserSchema.methods.createJWT = function () {
   });
 };
 
-//to compare the password from the login and that stored in the database
+//to compare the password from the login and that stored in the database (both are in hashed version)
 //this method is like a customHook
-// UserSchema.methods.comparePassword = async function (candidatePassword) {
-//   //this.password is the value retrieved from the database
-//   const isMatch = await bcrypt.compare(candidatePassword, this.password);
-//   return isMatch;
-// };
+UserSchema.methods.comparePassword = async function (candidatePassword) {
+  //this.password is the value retrieved from the database
+  const isMatch = await bcrypt.compare(candidatePassword, this.password);
+  return isMatch;
+};
 
 export default mongoose.model("User", UserSchema);

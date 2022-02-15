@@ -13,7 +13,7 @@ const initialState = {
 
 const Register = () => {
   const [values, setValues] = useState(initialState);
-  const { showAlert, isLoading, displayAlert, registerUser, user } =
+  const { showAlert, isLoading, displayAlert, setupUser, user } =
     useAppContext();
   const navigate = useNavigate();
 
@@ -21,7 +21,7 @@ const Register = () => {
     if (user) {
       setTimeout(() => {
         navigate("/");
-      }, 3000);
+      }, 2500);
     }
   }, [user, navigate]);
 
@@ -38,9 +38,17 @@ const Register = () => {
     }
     const currentUser = { name, email, password };
     if (isMember) {
-      console.log("already a member");
+      setupUser({
+        currentUser,
+        endPoint: "login",
+        alertText: "Login Succesful! Redirecting...",
+      });
     } else {
-      registerUser(currentUser);
+      setupUser({
+        currentUser,
+        endPoint: "register",
+        alertText: "User Created! Redirecting...",
+      });
     }
   };
   const toggleMember = () => {

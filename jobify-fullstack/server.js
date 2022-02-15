@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import connectDB from "./db/connect.js";
 import authRouter from "./routes/authRoutes.js";
 import jobsRouter from "./routes/jobsRoutes.js";
+import morgan from "morgan";
 
 dotenv.config();
 const app = express();
@@ -12,6 +13,11 @@ import "express-async-errors";
 
 //middleware to load req.body data
 app.use(express.json());
+
+//middleware to handle login
+if (process.env.NODE_ENV !== "production") {
+  app.use(morgan("dev"));
+}
 
 app.get("/", (req, res) => {
   res.send("welcome");

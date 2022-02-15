@@ -1,6 +1,6 @@
 import User from "../models/User.js";
 import { StatusCodes } from "http-status-codes";
-import { BadRequestError } from "../errors/index.js";
+import { BadRequestError, UnauthenticatedError } from "../errors/index.js";
 
 //***************REGISTER************//
 const register = async (req, res, next) => {
@@ -35,8 +35,32 @@ const register = async (req, res, next) => {
 };
 
 //***************LOGIN************//
-const login = async (req, res) => {
-  res.send("login");
+const login = async (req, res, next) => {
+  try {
+    const { email, password } = req.body;
+    if (!email || !password) {
+      throw new BadRequestError("Please provide all values");
+    }
+    //to include again the password in the document retrieved from mongoDB
+    const user = await User.findOne({ email }).select("+password");
+
+    if (!user) {
+      throw new UnauthenticatedError("Invalid Credentials");
+    }
+
+    //it will compare the password with the one included in the findOne result
+    const isPasswordCorrect = await user.comparePassword(password);
+
+    if (!isPasswordCorrect) {
+      throw new UnauthenticatedError("Invalid Credentials");
+    }
+    const token = user.createJWT();
+    user.password = undefined;
+
+    res.status(StatusCodes.OK).json({ user, token, location: user.location });
+  } catch (error) {
+    next(error);
+  }
 };
 
 //***************UPDATE************//
