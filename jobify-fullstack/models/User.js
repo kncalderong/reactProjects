@@ -45,6 +45,12 @@ const UserSchema = new mongoose.Schema({
 
 //this is a mongoose middleware to hash the password before save it
 UserSchema.pre("save", async function (next) {
+  //   console.log(this.modifiedPaths());
+  //   console.log(this.isModified("name"));
+  //to check if is not modifying the password (in updateUser function)
+  //because the password is never modified, then the update now can works
+
+  if (!this.isModified("password")) return;
   const salt = await bcrypt.genSalt(10);
   //this.password is refered to the password on the document being created
   this.password = await bcrypt.hash(this.password, salt);
