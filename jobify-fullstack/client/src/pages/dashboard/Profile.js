@@ -1,32 +1,34 @@
-import React,{useState} from "react";
-import {useAppContext} from "../../context/appContext"
-import {FormRow, Alert} from "../../components"
-import Wrapper from "../../assets/wrappers/DashboardFormPage"
+import React, { useState } from "react";
+import { useAppContext } from "../../context/appContext";
+import { FormRow, Alert } from "../../components";
+import Wrapper from "../../assets/wrappers/DashboardFormPage";
 
 const Profile = () => {
-  const {user,showAlert,displayAlert, updateUser, isLoading} = useAppContext()
+  const { user, showAlert, displayAlert, updateUser, isLoading } =
+    useAppContext();
 
   const [name, setName] = useState(user?.name);
   const [email, setEmail] = useState(user?.email);
   const [lastName, setLastName] = useState(user?.lastName);
   const [location, setLocation] = useState(user?.location);
 
-  const handleSubmit = (e) =>{
-    e.preventDefault()
-     if (!name || !email || !lastName || !location) {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!name || !email || !lastName || !location) {
       // test and remove temporary
       displayAlert();
       return;
     }
-    updateUser({name,email,lastName,location})
-  }
+    updateUser({ name, email, lastName, location });
+  };
 
-  return <Wrapper>
-    <form onSubmit={handleSubmit} className="form">
-      <h3>profile</h3>
-      {showAlert && <Alert />}
-      <div className="form-center">
-           <FormRow
+  return (
+    <Wrapper>
+      <form onSubmit={handleSubmit} className="form">
+        <h3>profile</h3>
+        {showAlert && <Alert />}
+        <div className="form-center">
+          <FormRow
             type="text"
             name="name"
             value={name}
@@ -55,9 +57,10 @@ const Profile = () => {
           <button className="btn btn-block" type="submit" disabled={isLoading}>
             {isLoading ? "Please wait..." : "save changes"}
           </button>
-      </div>
-    </form>
-  </Wrapper>
+        </div>
+      </form>
+    </Wrapper>
+  );
 };
 
 export default Profile;
