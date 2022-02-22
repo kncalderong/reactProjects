@@ -194,7 +194,7 @@ const AppProvider = ({ children }) => {
       // call function instead clearValues()
       dispatch({ type: CLEAR_VALUES });
     } catch (error) {
-      if (error.response.status === 401) return;
+      if (error.response.status !== 401) return;
       dispatch({
         type: CREATE_JOB_ERROR,
         payload: { msg: error.response.data.msg },

@@ -11,6 +11,7 @@ const createJob = async (req, res, next) => {
     }
 
     //to include the Id referred to whom created the job
+    //this comes from the Authentication middleware
     req.body.createdBy = req.user.userId;
     console.log(req.user);
 
@@ -23,8 +24,15 @@ const createJob = async (req, res, next) => {
 const deleteJob = async (req, res) => {
   res.send("deleteJob");
 };
-const getAllJobs = async (req, res) => {
-  res.send("getAllJobs");
+const getAllJobs = async (req, res, next) => {
+  try {
+    const jobs = await Job.find({ createdBy: req.user.userId });
+    res
+      .status(StatusCodes.OK)
+      .json({ jobs, totalJobs: jobs.length, numOfPages: 1 });
+  } catch (error) {
+    next(error);
+  }
 };
 
 const updateJob = async (req, res) => {
