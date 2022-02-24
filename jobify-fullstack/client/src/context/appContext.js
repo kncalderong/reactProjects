@@ -1,4 +1,4 @@
-import React, { useContext, useReducer} from "react";
+import React, { useContext, useReducer } from "react";
 import reducer from "./reducer";
 import axios from "axios";
 import {
@@ -20,6 +20,10 @@ import {
   GET_JOBS_BEGIN,
   GET_JOBS_SUCCESS,
   SET_EDIT_JOB,
+  DELETE_JOB_BEGIN,
+  EDIT_JOB_BEGIN,
+  EDIT_JOB_SUCCESS,
+  EDIT_JOB_ERROR,
 } from "./actions";
 
 const token = localStorage.getItem("token");
@@ -53,8 +57,6 @@ export const initialState = {
 const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-
- 
 
   //setup of axios authorization
   // axios.defaults.headers.common["Authorization"] = `Bearer ${state.token}`;
@@ -203,7 +205,7 @@ const AppProvider = ({ children }) => {
       // call function instead clearValues()
       dispatch({ type: CLEAR_VALUES });
     } catch (error) {
-      if (error.response.status !== 401) return;
+      if (error.response.status === 401) return;
       dispatch({
         type: CREATE_JOB_ERROR,
         payload: { msg: error.response.data.msg },
@@ -225,7 +227,6 @@ const AppProvider = ({ children }) => {
           numOfPages,
         },
       });
-      
     } catch (error) {
       console.log(error);
       logoutUser();
@@ -235,11 +236,35 @@ const AppProvider = ({ children }) => {
   const setEditJob = (id) => {
     dispatch({ type: SET_EDIT_JOB, payload: { id } });
   };
-  const deleteJob = (id) => {
-    console.log(`delete: ${id}`);
+  const deleteJob = async (jobId) => {
+    dispatch({ type: DELETE_JOB_BEGIN });
+    try {
+      await authFetch.delete(`jobs/${jobId}`);
+      //because the getJobs triggers another action, the setLoading will be false again anyways
+      getJobs();
+    } catch (error) {
+      logoutUser();
+    }
   };
-  const editJob = () => {
-    console.log("edit job");
+  const editJob = async () => {
+    dispatch({type:EDIT_JOB_BEGIN})
+    try {
+       const { position, company, jobLocation, jobType, status } = state;
+      await authFetch.patch(`jobs/${state.editJobId}`, {
+        company,
+        position,
+        jobLocation,
+        jobType,
+        status,
+      });
+      dispatch({type:EDIT_JOB_SUCCESS})
+      dispatch({type:CLEAR_VALUES})
+    } catch (error) {
+      dispatch({type:EDIT_JOB_ERROR, payload:{
+        msg: error.response.data.msg
+      }})
+    }
+    clearAlert()
   };
   return (
     <AppContext.Provider
