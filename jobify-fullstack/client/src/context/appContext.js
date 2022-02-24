@@ -1,4 +1,4 @@
-import React, { useContext, useReducer, useEffect } from "react";
+import React, { useContext, useReducer} from "react";
 import reducer from "./reducer";
 import axios from "axios";
 import {
@@ -54,9 +54,7 @@ const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  useEffect(() => {
-    getJobs();
-  }, []);
+ 
 
   //setup of axios authorization
   // axios.defaults.headers.common["Authorization"] = `Bearer ${state.token}`;
@@ -227,7 +225,7 @@ const AppProvider = ({ children }) => {
           numOfPages,
         },
       });
-      console.log(jobs);
+      
     } catch (error) {
       console.log(error);
       logoutUser();

@@ -1,6 +1,7 @@
 import Job from "../models/Job.js";
 import { StatusCodes } from "http-status-codes";
 import { BadRequestError, NotFoundError } from "../errors/index.js";
+import checkPermissions from "../utils/checkPermissions.js";
 
 const createJob = async (req, res, next) => {
   try {
@@ -21,9 +22,23 @@ const createJob = async (req, res, next) => {
     next(error);
   }
 };
-const deleteJob = async (req, res) => {
-  res.send("deleteJob");
+
+const deleteJob = async (req, res, next) => {
+  try {
+    const { id: jobId } = req.params;
+    const job = await Job.findOne({ _id: jobId });
+    if (!job) {
+      throw new CustomError.NotFoundError(`No job with id : ${jobId}`);
+    }
+    checkPermissions(req.user, job.createdBy);
+
+    await job.remove();
+    res.status(StatusCodes.OK).json({ msg: "Job removed" });
+  } catch (error) {
+    next(error);
+  }
 };
+
 const getAllJobs = async (req, res, next) => {
   try {
     const jobs = await Job.find({ createdBy: req.user.userId });
@@ -35,8 +50,39 @@ const getAllJobs = async (req, res, next) => {
   }
 };
 
-const updateJob = async (req, res) => {
-  res.send("updateJob");
+const updateJob = async (req, res, next) => {
+  try {
+    const { id: jobId } = req.params;
+    const { company, position } = req.body;
+
+    if (!company || !position) {
+      throw new BadRequestError("Please Provide All Values");
+    }
+    const job = await Job.findOne({ _id: jobId });
+
+    if (!job) {
+      throw new NotFoundError(`No job with id: ${jobId}`);
+    }
+
+    //check permissions
+    checkPermissions(req.user, job.createdBy);
+
+    const updatedJob = await Job.findOneAndUpdate({ _id: jobId }, req.body, {
+      new: true,
+      runValidators: true,
+    });
+
+    // alternative approach
+
+    // job.position = position;
+    // job.company = company;
+    // job.jobLocation = jobLocation;
+    // await job.save();
+
+    res.status(StatusCodes.OK).json({ updatedJob });
+  } catch (error) {
+    next(error);
+  }
 };
 const showStats = async (req, res) => {
   res.send("showStats");
