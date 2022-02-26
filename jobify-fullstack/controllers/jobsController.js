@@ -2,6 +2,7 @@ import Job from "../models/Job.js";
 import { StatusCodes } from "http-status-codes";
 import { BadRequestError, NotFoundError } from "../errors/index.js";
 import checkPermissions from "../utils/checkPermissions.js";
+import mongoose from "mongoose";
 
 const createJob = async (req, res, next) => {
   try {
@@ -85,6 +86,30 @@ const updateJob = async (req, res, next) => {
   }
 };
 const showStats = async (req, res) => {
-  res.send("showStats");
+  let stats = await Job.aggregate([
+    { $match: { createdBy: mongoose.Types.ObjectId(req.user.userId) } },
+    { $group: { _id: "$status", count: { $sum: 1 } } },
+  ]);
+
+  //this is to change the array to an object, easily to manipulate on the front
+  stats = stats.reduce((acc, curr) => {
+    //acc stands for "accumulator"
+    //this are the values of each object from the mongoose agreggate
+    const { _id: title, count } = curr;
+
+    //this will be the output:
+    acc[title] = count;
+    return acc;
+  }, {});
+
+  const defaultStats = {
+    pending: stats.pending || 0,
+    interview: stats.interview || 0,
+    declined: stats.declined || 0,
+  };
+
+  let monthlyApplications = [];
+
+  res.status(StatusCodes.OK).json({ defaultStats, monthlyApplications });
 };
 export { createJob, deleteJob, getAllJobs, updateJob, showStats };
