@@ -24,6 +24,8 @@ import {
   EDIT_JOB_BEGIN,
   EDIT_JOB_SUCCESS,
   EDIT_JOB_ERROR,
+  SHOW_STATS_BEGIN,
+  SHOW_STATS_SUCCESS,
 } from "./actions";
 
 const token = localStorage.getItem("token");
@@ -53,6 +55,8 @@ export const initialState = {
   totalJobs: 0,
   numOfPages: 1,
   page: 1,
+  stats: {},
+  monthlyApplications: [],
 };
 const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
@@ -247,9 +251,9 @@ const AppProvider = ({ children }) => {
     }
   };
   const editJob = async () => {
-    dispatch({type:EDIT_JOB_BEGIN})
+    dispatch({ type: EDIT_JOB_BEGIN });
     try {
-       const { position, company, jobLocation, jobType, status } = state;
+      const { position, company, jobLocation, jobType, status } = state;
       await authFetch.patch(`jobs/${state.editJobId}`, {
         company,
         position,
@@ -257,14 +261,34 @@ const AppProvider = ({ children }) => {
         jobType,
         status,
       });
-      dispatch({type:EDIT_JOB_SUCCESS})
-      dispatch({type:CLEAR_VALUES})
+      dispatch({ type: EDIT_JOB_SUCCESS });
+      dispatch({ type: CLEAR_VALUES });
     } catch (error) {
-      dispatch({type:EDIT_JOB_ERROR, payload:{
-        msg: error.response.data.msg
-      }})
+      dispatch({
+        type: EDIT_JOB_ERROR,
+        payload: {
+          msg: error.response.data.msg,
+        },
+      });
     }
-    clearAlert()
+    clearAlert();
+  };
+  const showStats = async () => {
+    dispatch({ type: SHOW_STATS_BEGIN });
+    try {
+      const { data } = await authFetch("/jobs/stats");
+      dispatch({
+        type: SHOW_STATS_SUCCESS,
+        payload: {
+          stats: data.defaultStats,
+          monthlyApplications: data.monthlyApplications,
+        },
+      });
+    } catch (error) {
+      console.log(error);
+      logoutUser();
+    }
+    clearAlert();
   };
   return (
     <AppContext.Provider
@@ -282,6 +306,7 @@ const AppProvider = ({ children }) => {
         setEditJob,
         deleteJob,
         editJob,
+        showStats,
       }}
     >
       {children}
