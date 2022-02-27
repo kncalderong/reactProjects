@@ -144,7 +144,7 @@ const showStats = async (req, res, next) => {
           count,
         } = item;
         const date = moment()
-          .month(month - 1)
+          .month(month - 1) //its because mongo handle 1-12 months, but moment 0-11
           .year(year)
           .format("MMM Y");
         return { date, count };
