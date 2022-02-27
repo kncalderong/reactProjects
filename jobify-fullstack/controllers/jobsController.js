@@ -43,7 +43,7 @@ const deleteJob = async (req, res, next) => {
 
 const getAllJobs = async (req, res, next) => {
   try {
-    const { search, status, jobType, sort } = req.body;
+    const { search, status, jobType, sort } = req.query;
     const queryObject = { createdBy: req.user.userId };
 
     if (status !== "all") {
