@@ -18,7 +18,7 @@ const SearchContainer = () => {
   } = useAppContext();
 
   const handleSearch = (e) => {
-    if (isLoading) return;
+    if (isLoading) return; //to prevent the user keeps writing during the fetch request
     handleChange({ name: e.target.name, value: e.target.value });
   };
 

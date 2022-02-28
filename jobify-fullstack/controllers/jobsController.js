@@ -73,10 +73,21 @@ const getAllJobs = async (req, res, next) => {
       result = result.sort("-position");
     }
 
+    // const totalJobs = await result;
+
+    // setup pagination
+    const page = Number(req.query.page) || 1;
+    const limit = Number(req.query.limit) || 10;
+    const skip = (page - 1) * limit; //ej: pag 2 = skip 10*1 (skip first tenth)
+
+    //this are methods from mongoose
+    result = result.skip(skip).limit(limit);
+
     const jobs = await result;
-    res
-      .status(StatusCodes.OK)
-      .json({ jobs, totalJobs: jobs.length, numOfPages: 1 });
+    const totalJobs = await Job.countDocuments(queryObject);
+    const numOfPages = Math.ceil(totalJobs / limit);
+
+    res.status(StatusCodes.OK).json({ jobs, totalJobs, numOfPages });
   } catch (error) {
     next(error);
   }
