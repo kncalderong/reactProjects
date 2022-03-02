@@ -34,13 +34,13 @@ function App() {
           </div>
           <div className="info-item">
             <div className="info-title">IP ADDRESS</div>
-            <div className="content">192.212.174.101</div>
+            <div className="content">Brooklyn, NY 10001</div>
           </div>
           <div className="info-item">
             <div className="info-title">IP ADDRESS</div>
             <div className="content">192.212.174.101</div>
           </div>
-          <div className="info-item">
+          <div className="info-item info-item-last">
             <div className="info-title">IP ADDRESS</div>
             <div className="content">192.212.174.101</div>
           </div>
