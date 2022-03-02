@@ -265,15 +265,16 @@ main {
 
 .info-container {
   display: flex;
-  height: 55%;
+  height: 60%;
   width: 80%;
   max-width: 1024px;
   background-color: #fff;
   position: absolute;
-  transform: translateY(135%);
+  transform: translateY(115%);
   border-radius: var(--borderRadius);
   padding: 2rem 0;
   flex-wrap: wrap;
+  z-index: 10;
 }
 .info-item {
   flex-grow: 1;
@@ -302,8 +303,14 @@ main {
 .map-container {
   width: 100%;
   min-height: 400px;
-  flex-grow: 1;
+  /* flex-grow: 1; */
   background-color: #64748b;
+  height: 65%;
+}
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
 }
 /********** Large devices only **********/
 @media (min-width: 1025px) {
