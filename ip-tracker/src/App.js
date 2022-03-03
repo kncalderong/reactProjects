@@ -20,6 +20,8 @@ function App() {
   const [search, setSearch] = useState("");
   const [content, setContent] = useState(baseContent);
   const [isLoading, setIsLoading] = useState(false);
+  const [position, setPosition] = useState(null);
+  const [alert, setAlert] = useState(false);
 
   useEffect(() => {
     fetchData();
@@ -39,6 +41,8 @@ function App() {
         content[3].info = data.isp;
         return content;
       });
+      setPosition([data.location.lat, data.location.lng]);
+
       setIsLoading(false);
     } catch (error) {
       console.log(error);
@@ -56,7 +60,13 @@ function App() {
       fetchData();
       return;
     }
-    fetchData();
+    setAlert(true);
+    setSearch("");
+    const clearAlert = setTimeout(() => {
+      setAlert(false);
+    }, 2000);
+    clearAlert();
+    clearTimeout(clearAlert);
   };
 
   const validateIPaddress = (ipaddress) => {
@@ -70,6 +80,9 @@ function App() {
     return false;
   };
 
+  if (isLoading) {
+    return <h1>Loading ....</h1>;
+  }
   return (
     <main>
       <div
@@ -83,11 +96,19 @@ function App() {
           <div className="search-container">
             <input
               type="text"
-              placeholder="Search for any IP address or domain"
+              placeholder={
+                alert
+                  ? "IP address invalid"
+                  : `Search for any IP address or domain`
+              }
+              className={alert && "input-alert"}
               value={search}
               onChange={handleChange}
             />
-            <button className="submit-btn" onClick={handleSubmit}>
+            <button
+              className={`submit-btn btn ${alert && "submit-btn-alert"}`}
+              onClick={handleSubmit}
+            >
               <img src={imgSbmt} alt="submit" />
             </button>
           </div>
@@ -107,17 +128,25 @@ function App() {
         </div>
       </div>
       <div className="map-container">
-        <MapContainer center={[51.505, -0.09]} zoom={17}>
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          <Marker position={[51.505, -0.09]} icon={ipIcon}>
-            <Popup>
-              A pretty CSS3 popup. <br /> Easily customizable.
-            </Popup>
-          </Marker>
-        </MapContainer>
+        {position && (
+          <MapContainer
+            center={position ? position : [51.505, -0.09]}
+            zoom={12}
+          >
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            <Marker
+              position={position ? position : [51.505, -0.09]}
+              icon={ipIcon}
+            >
+              <Popup>
+                A pretty CSS3 popup. <br /> Easily customizable.
+              </Popup>
+            </Marker>
+          </MapContainer>
+        )}
       </div>
     </main>
   );
