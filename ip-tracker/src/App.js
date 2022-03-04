@@ -2,7 +2,7 @@ import bcg from "./assets/images/pattern-bg.png";
 import imgSbmt from "./assets/images/icon-arrow.svg";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { Icon } from "leaflet";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 
 const ipIcon = new Icon({
   iconUrl: "/icon-location.svg",
@@ -22,10 +22,6 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [position, setPosition] = useState(null);
   const [alert, setAlert] = useState(false);
-
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   let url = `https://geo.ipify.org/api/v2/country,city?apiKey=${process.env.REACT_APP_API_KEY}`;
 
@@ -49,6 +45,10 @@ function App() {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
   const handleChange = (e) => {
     setSearch(e.target.value);
   };
@@ -62,11 +62,11 @@ function App() {
     }
     setAlert(true);
     setSearch("");
-    const clearAlert = setTimeout(() => {
+    setTimeout(() => {
       setAlert(false);
     }, 2000);
-    clearAlert();
-    clearTimeout(clearAlert);
+    // clearAlert();
+    // clearTimeout(clearAlert);
   };
 
   const validateIPaddress = (ipaddress) => {
@@ -81,7 +81,11 @@ function App() {
   };
 
   if (isLoading) {
-    return <h1>Loading ....</h1>;
+    return (
+      <div className="loading-container">
+        <div className="loading"></div>
+      </div>
+    );
   }
   return (
     <main>
@@ -101,7 +105,7 @@ function App() {
                   ? "IP address invalid"
                   : `Search for any IP address or domain`
               }
-              className={alert && "input-alert"}
+              className={alert ? "input-alert" : undefined}
               value={search}
               onChange={handleChange}
             />
