@@ -4,16 +4,16 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { Icon } from "leaflet";
 import { useEffect, useState, useCallback } from "react";
 
+//34.04915, -118.09462
 const ipIcon = new Icon({
   iconUrl: "/icon-location.svg",
-  // iconSize: [35, 35],
 });
 
 let baseContent = [
-  { sub: "ip address", info: "" },
-  { sub: "location", info: "" },
-  { sub: "timezone", info: "" },
-  { sub: "isp", info: "" },
+  { sub: "ip address", info: "192.212.174.101" },
+  { sub: "location", info: "Brooklyn, NY 10001" },
+  { sub: "timezone", info: "UTC-05:00" },
+  { sub: "isp", info: "SpaceX Starlink" },
 ];
 
 function App() {
@@ -47,6 +47,7 @@ function App() {
   };
 
   useEffect(() => {
+    // setTimeout(fetchData, 4000);
     fetchData();
   }, []);
   const handleChange = (e) => {
@@ -132,25 +133,23 @@ function App() {
         </div>
       </div>
       <div className="map-container">
-        {position && (
-          <MapContainer
-            center={position ? position : [51.505, -0.09]}
-            zoom={12}
+        <MapContainer
+          center={position ? position : [34.04915, -118.09462]}
+          zoom={12}
+        >
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          <Marker
+            position={position ? position : [34.04915, -118.09462]}
+            icon={ipIcon}
           >
-            <TileLayer
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            <Marker
-              position={position ? position : [51.505, -0.09]}
-              icon={ipIcon}
-            >
-              <Popup>
-                A pretty CSS3 popup. <br /> Easily customizable.
-              </Popup>
-            </Marker>
-          </MapContainer>
-        )}
+            <Popup>
+              A pretty CSS3 popup. <br /> Easily customizable.
+            </Popup>
+          </Marker>
+        </MapContainer>
       </div>
     </main>
   );
