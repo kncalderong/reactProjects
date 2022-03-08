@@ -62,7 +62,7 @@ html {
   /*rest of the vars*/
   --backgroundColor: var(--grey-50);
   --textColor: var(--grey-900);
-  --borderRadius: 0.45rem;
+  --borderRadius: 0.55rem;
   --letterSpacing: 1px;
   --transition: 0.3s ease-in-out all; /*applied to any change in all properties*/
   --max-width: 1120px;
