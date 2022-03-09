@@ -1,20 +1,17 @@
 import styled from "styled-components";
-import { Counter } from "./components";
+import { Comment } from "./components";
 
 function App() {
   return (
     <Wrapper>
       <div className="main-container">
         <div className="comments-container">
-          <div className="comment">
-            <Counter />
-            main comment
-          </div>
-          <div className="comment">main comment</div>
+          <Comment />
+          <Comment />
           <div className="child-comments-container">
             <div className="line"></div>
-            <div className="comment child-comment">child comment</div>
-            <div className="comment child-comment">child comment</div>
+            <Comment child={"child"} />
+            <Comment child={"child"} />
           </div>
         </div>
         <div className="add-comment"></div>
@@ -36,7 +33,7 @@ const Wrapper = styled.main`
   .main-container {
     background-color: var(--very-light-gray);
     width: 90%;
-    max-width: 600px;
+    max-width: 750px;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -47,15 +44,7 @@ const Wrapper = styled.main`
     width: 100%;
     background-color: var(--very-light-gray);
   }
-  .comment {
-    width: 100%;
-    margin-bottom: 15px;
-    background-color: #fff;
-    height: 120px;
-    border-radius: var(--borderRadius);
-    padding: 1.25rem;
-    display: flex;
-  }
+
   .child-comments-container {
     width: 100%;
     height: auto;
@@ -65,9 +54,7 @@ const Wrapper = styled.main`
     flex-direction: column;
     align-items: flex-end;
   }
-  .child-comment {
-    width: 85%;
-  }
+
   .line {
     width: 3px;
     height: calc(100% - 15px);
@@ -77,7 +64,7 @@ const Wrapper = styled.main`
   }
   .add-comment {
     min-height: 110px;
-    height: 120px;
+    height: 150px;
     width: 100%;
     background-color: var(--grayish-blue);
     border-radius: var(--borderRadius);

@@ -21,8 +21,8 @@ export default Counter;
 
 const Wrapper = styled.div`
   margin-right: 1.25rem;
-  width: 35px;
-  height: 80px;
+  width: 40px;
+  height: 100px;
   background-color: var(--very-light-gray);
   display: flex;
   flex-direction: column;
@@ -33,6 +33,13 @@ const Wrapper = styled.div`
   .count {
     font-size: 0.9rem;
     font-weight: 600;
+    height: 21px;
+  }
+  .symbol-conteiner,
+  .count {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .symbol-container {
