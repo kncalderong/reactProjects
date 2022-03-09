@@ -1,63 +1,69 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Counter } from "./";
 import { FaReply } from "react-icons/fa";
 import { MdDelete, MdModeEdit } from "react-icons/md";
+import { AddComment } from "./";
 
-const Comment = ({ child }) => {
-  let width = child ? "85%" : "100%";
+const Comment = () => {
+  const [isReplying, setIsReplying] = useState(false);
+
+  let marginBottom = isReplying ? "5px" : "15px";
   return (
-    <Wrapper width={width}>
-      <Counter />
-      <div className="content">
-        <div className="comment-head">
-          <div className="user-info">
-            <div className="img-container">
-              <img
-                src={require("../assets/images/avatars/image-amyrobson.png")}
-                alt="avatar"
-                className="img"
-              />
+    <>
+      <Wrapper marginBottom={marginBottom}>
+        <Counter />
+        <div className="content">
+          <div className="comment-head">
+            <div className="user-info">
+              <div className="img-container">
+                <img
+                  src={require("../assets/images/avatars/image-amyrobson.png")}
+                  alt="avatar"
+                  className="img"
+                />
+              </div>
+              <div className="name">
+                amyrobson
+                <span className="you-notif">you</span>
+              </div>
+              <div className="createdAt">1 month ago</div>
             </div>
-            <div className="name">
-              amyrobson
-              <span className="you-notif">you</span>
-            </div>
-            <div className="createdAt">1 month ago</div>
-          </div>
-          <div className="actions">
-            <div className="delete">
-              <MdDelete />
-              <p className="action-name">Delete</p>
-            </div>
-            {/* <div className="reply">
+            <div className="actions">
+              <div className="delete">
+                <MdDelete />
+                <p className="action-name">Delete</p>
+              </div>
+              {/* <div className="reply">
               <FaReply />
               <p className="action-name">Reply</p>
             </div> */}
-            <div className="edit">
-              <MdModeEdit />
-              <p className="action-name">Edit</p>
+              <div className="edit">
+                <MdModeEdit />
+                <p className="action-name">Edit</p>
+              </div>
             </div>
           </div>
+          <div className="comment-info">
+            <p>
+              <span className="replyingTo">@maxblagun</span>
+              If you're still new, I'd recommend focusing on the fundamentals of
+              HTML, CSS, and JS before considering React. It's very tempting to
+              jump ahead but lay a solid foundation first.
+            </p>
+          </div>
         </div>
-        <div className="comment-info">
-          <p>
-            <span className="replyingTo">@maxblagun</span>
-            If you're still new, I'd recommend focusing on the fundamentals of
-            HTML, CSS, and JS before considering React. It's very tempting to
-            jump ahead but lay a solid foundation first.
-          </p>
-        </div>
-      </div>
-    </Wrapper>
+      </Wrapper>
+      {isReplying && <AddComment />}
+    </>
   );
 };
 
 export default Comment;
 
 const Wrapper = styled.div`
-  width: ${(props) => props.width};
-  margin-bottom: 15px;
+  width: 100%;
+  margin-bottom: ${(props) => props.marginBottom};
   background-color: #fff;
   height: auto;
   max-height: 200px;

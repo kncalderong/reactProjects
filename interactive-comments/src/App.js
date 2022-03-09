@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Comment } from "./components";
+import { Comment, AddComment } from "./components";
 
 function App() {
   return (
@@ -7,14 +7,17 @@ function App() {
       <div className="main-container">
         <div className="comments-container">
           <Comment />
+
           <Comment />
           <div className="child-comments-container">
             <div className="line"></div>
-            <Comment child={"child"} />
-            <Comment child={"child"} />
+            <div className="child-comments">
+              <Comment />
+              <Comment />
+            </div>
           </div>
         </div>
-        <div className="add-comment"></div>
+        <AddComment />
       </div>
     </Wrapper>
   );
@@ -54,6 +57,9 @@ const Wrapper = styled.main`
     flex-direction: column;
     align-items: flex-end;
   }
+  .child-comments {
+    width: 85%;
+  }
 
   .line {
     width: 3px;
@@ -61,13 +67,6 @@ const Wrapper = styled.main`
     background-color: var(--light-gray);
     position: absolute;
     left: 7.5%;
-  }
-  .add-comment {
-    min-height: 110px;
-    height: 150px;
-    width: 100%;
-    background-color: var(--grayish-blue);
-    border-radius: var(--borderRadius);
   }
 `;
 

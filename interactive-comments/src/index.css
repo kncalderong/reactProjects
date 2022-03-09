@@ -218,10 +218,15 @@ ul {
 .form-input,
 .form-textarea {
   width: 100%;
-  padding: 0.375rem 0.75rem;
+
   border-radius: var(--borderRadius);
-  background: var(--backgroundColor);
-  border: 1px solid var(--gray-200);
+
+  background-color: #fff;
+  margin-right: 1rem;
+  border: 2px solid var(--light-gray);
+  padding: 1rem;
+  color: var(--grayish-blue);
+  font-weight: 500;
 }
 
 .form-row {
