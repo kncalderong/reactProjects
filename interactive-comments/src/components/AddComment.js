@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const AddComment = () => {
+const AddComment = ({ isReplying }) => {
   return (
     <Wrapper>
       <div className="add-img-container">
@@ -18,7 +18,9 @@ const AddComment = () => {
           className="form-textarea"
           placeholder="Add a comment..."
         ></textarea>
-        <button className="btn submit-btn"> send</button>
+        <button className="btn submit-btn">
+          {isReplying ? "reply" : "send"}
+        </button>
       </form>
     </Wrapper>
   );

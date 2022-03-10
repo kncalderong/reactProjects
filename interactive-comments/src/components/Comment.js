@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import { Counter } from "./";
 import { FaReply } from "react-icons/fa";
@@ -7,6 +7,14 @@ import { AddComment } from "./";
 
 const Comment = () => {
   const [isReplying, setIsReplying] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [comment, setComment] = useState("");
+  const pContainer = useRef(null);
+
+  const handleEdit = (e) => {
+    setIsEditing(!isEditing);
+    setComment(pContainer.current.innerHTML);
+  };
 
   let marginBottom = isReplying ? "5px" : "15px";
   return (
@@ -34,27 +42,41 @@ const Comment = () => {
                 <MdDelete />
                 <p className="action-name">Delete</p>
               </div>
+
               {/* <div className="reply">
               <FaReply />
               <p className="action-name">Reply</p>
             </div> */}
-              <div className="edit">
+              <div className="edit" onClick={handleEdit}>
                 <MdModeEdit />
                 <p className="action-name">Edit</p>
               </div>
             </div>
           </div>
-          <div className="comment-info">
-            <p>
-              <span className="replyingTo">@maxblagun</span>
-              If you're still new, I'd recommend focusing on the fundamentals of
-              HTML, CSS, and JS before considering React. It's very tempting to
-              jump ahead but lay a solid foundation first.
-            </p>
-          </div>
+          {!isEditing && (
+            <div className="comment-info">
+              <p>
+                <span className="replyingTo">@maxblagun</span>
+                <span ref={pContainer}>
+                  If you're still new, I'd recommend focusing on the
+                  fundamentals of HTML, CSS, and JS before considering React.
+                  It's very tempting to jump ahead but lay a solid foundation
+                  first.
+                </span>
+              </p>
+            </div>
+          )}
+          {isEditing && (
+            <form>
+              <textarea rows="4" cols="30" className="form-textarea">
+                {comment}
+              </textarea>
+              <button className="btn edit-btn">update</button>
+            </form>
+          )}
         </div>
       </Wrapper>
-      {isReplying && <AddComment />}
+      {isReplying && <AddComment isReplying={isReplying} />}
     </>
   );
 };
@@ -66,7 +88,7 @@ const Wrapper = styled.div`
   margin-bottom: ${(props) => props.marginBottom};
   background-color: #fff;
   height: auto;
-  max-height: 200px;
+  max-height: 300px;
   border-radius: var(--borderRadius);
   padding: 1.5rem;
   display: flex;
@@ -150,5 +172,30 @@ const Wrapper = styled.div`
   .comment-info p {
     color: var(--grayish-blue);
     font-weight: 500;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 100%;
+    flex-grow: 1;
+  }
+  .form-textarea {
+    margin: 1rem 0;
+    line-height: 1.8rem;
+    resize: none;
+  }
+  .form-textarea:focus-visible {
+    border: 3px solid var(--grey-400);
+    outline: none;
+  }
+  .edit-btn {
+    background-color: var(--moderate-blue);
+    text-transform: uppercase;
+    height: 40px;
+    width: 115px;
+  }
+  .edit-btn:hover {
+    background-color: var(--light-grayish-blue);
   }
 `;
