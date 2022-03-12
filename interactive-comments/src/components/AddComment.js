@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
-const AddComment = ({ isReplying }) => {
+const AddComment = ({ isReplying, setComments, idCommentToReply }) => {
+  const [commentAdded, setCommentAdded] = useState("");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (isReplying) {
+      console.log(commentAdded);
+      setComments();
+    }
+  };
   return (
     <Wrapper>
       <div className="add-img-container">
@@ -17,8 +25,12 @@ const AddComment = ({ isReplying }) => {
           rows="10"
           className="form-textarea"
           placeholder="Add a comment..."
+          value={commentAdded}
+          onChange={(e) => {
+            setCommentAdded(e.target.value);
+          }}
         ></textarea>
-        <button className="btn submit-btn">
+        <button className="btn submit-btn" onClick={handleSubmit}>
           {isReplying ? "reply" : "send"}
         </button>
       </form>

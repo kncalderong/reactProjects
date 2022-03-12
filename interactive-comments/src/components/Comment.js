@@ -1,82 +1,118 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Counter } from "./";
 import { FaReply } from "react-icons/fa";
 import { MdDelete, MdModeEdit } from "react-icons/md";
 import { AddComment } from "./";
 
-const Comment = () => {
+const Comment = ({
+  id,
+  content,
+  createdAt,
+  score,
+  user,
+  replies,
+  currentUser,
+  replyingTo,
+  setComments,
+}) => {
   const [isReplying, setIsReplying] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
-  const [comment, setComment] = useState("");
-  const pContainer = useRef(null);
+
+  let isFromCurrentUser = currentUser.username === user.username ? true : false;
 
   const handleEdit = (e) => {
     setIsEditing(!isEditing);
-    setComment(pContainer.current.innerHTML);
+  };
+  const handleReply = () => {
+    setIsReplying(!isReplying);
   };
 
   let marginBottom = isReplying ? "5px" : "15px";
   return (
     <>
       <Wrapper marginBottom={marginBottom}>
-        <Counter />
+        <Counter score={score} />
         <div className="content">
           <div className="comment-head">
             <div className="user-info">
               <div className="img-container">
                 <img
-                  src={require("../assets/images/avatars/image-amyrobson.png")}
+                  src={require(`../assets/images/avatars/image-${user.username}.png`)}
                   alt="avatar"
                   className="img"
                 />
               </div>
               <div className="name">
-                amyrobson
-                <span className="you-notif">you</span>
+                {user.username}
+                {isFromCurrentUser && <span className="you-notif">you</span>}
               </div>
-              <div className="createdAt">1 month ago</div>
+              <div className="createdAt">{createdAt}</div>
             </div>
             <div className="actions">
-              <div className="delete">
-                <MdDelete />
-                <p className="action-name">Delete</p>
-              </div>
+              {isFromCurrentUser && (
+                <div className="delete">
+                  <MdDelete />
+                  <p className="action-name">Delete</p>
+                </div>
+              )}
 
-              {/* <div className="reply">
-              <FaReply />
-              <p className="action-name">Reply</p>
-            </div> */}
-              <div className="edit" onClick={handleEdit}>
-                <MdModeEdit />
-                <p className="action-name">Edit</p>
-              </div>
+              {!isFromCurrentUser && (
+                <div className="reply" onClick={handleReply}>
+                  <FaReply />
+                  <p className="action-name">Reply</p>
+                </div>
+              )}
+              {isFromCurrentUser && (
+                <div className="edit" onClick={handleEdit}>
+                  <MdModeEdit />
+                  <p className="action-name">Edit</p>
+                </div>
+              )}
             </div>
           </div>
           {!isEditing && (
             <div className="comment-info">
               <p>
-                <span className="replyingTo">@maxblagun</span>
-                <span ref={pContainer}>
-                  If you're still new, I'd recommend focusing on the
-                  fundamentals of HTML, CSS, and JS before considering React.
-                  It's very tempting to jump ahead but lay a solid foundation
-                  first.
-                </span>
+                {replyingTo && (
+                  <span className="replyingTo">@{replyingTo}</span>
+                )}
+                <span>{content}</span>
               </p>
             </div>
           )}
           {isEditing && (
             <form>
-              <textarea rows="4" cols="30" className="form-textarea">
-                {comment}
-              </textarea>
+              <textarea
+                rows="4"
+                cols="30"
+                className="form-textarea"
+                defaultValue={content}
+              ></textarea>
               <button className="btn edit-btn">update</button>
             </form>
           )}
         </div>
       </Wrapper>
-      {isReplying && <AddComment isReplying={isReplying} />}
+      {isReplying && (
+        <AddComment
+          isReplying={isReplying}
+          setComments={setComments}
+          idCommentToReply={id}
+        />
+      )}
+      {replies && (
+        <div className="child-comments-container">
+          <div className="line"></div>
+          <div className="child-comments">
+            {replies.map((reply, idx) => {
+              return (
+                <Comment {...reply} currentUser={currentUser} key={reply.id} />
+              );
+            })}
+          </div>
+        </div>
+      )}
     </>
   );
 };

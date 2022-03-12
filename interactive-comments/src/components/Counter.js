@@ -3,13 +3,13 @@ import styled from "styled-components";
 import { GoPlus } from "react-icons/go";
 import { HiMinus } from "react-icons/hi";
 
-const Counter = () => {
+const Counter = ({ score }) => {
   return (
     <Wrapper>
       <div className="symbol-container">
         <GoPlus />
       </div>
-      <div className="count">5</div>
+      <div className="count">{score}</div>
       <div className="symbol-container">
         <HiMinus />
       </div>
