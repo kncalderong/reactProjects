@@ -4,14 +4,15 @@ import { GoPlus } from "react-icons/go";
 import { HiMinus } from "react-icons/hi";
 import { useAppContext } from "../context/appContext";
 
-const Counter = ({ score, idComment }) => {
+const Counter = ({ score, idComment, child }) => {
   const { handleScore } = useAppContext();
+
   return (
     <Wrapper>
       <div
         className="symbol-container"
         onClick={() => {
-          handleScore("+", idComment);
+          handleScore("+", idComment, child);
         }}
       >
         <GoPlus />
@@ -20,7 +21,7 @@ const Counter = ({ score, idComment }) => {
       <div
         className="symbol-container"
         onClick={() => {
-          handleScore("-", idComment);
+          handleScore("-", idComment, child);
         }}
       >
         <HiMinus />
