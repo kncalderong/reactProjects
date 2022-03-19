@@ -4,6 +4,7 @@ import { Counter } from "./";
 import { FaReply } from "react-icons/fa";
 import { MdDelete, MdModeEdit } from "react-icons/md";
 import { AddComment } from "./";
+// import { useAppContext } from "../context/appContext";
 
 const Comment = ({
   id,
@@ -94,7 +95,9 @@ const Comment = ({
           )}
         </div>
       </Wrapper>
-      {isReplying && <AddComment isReplying={isReplying} />}
+      {isReplying && (
+        <AddComment isReplying={isReplying} idComment={id} child={child} />
+      )}
       {replies && (
         <div className="child-comments-container">
           <div className="line"></div>
