@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-const AddComment = ({ isReplying, setComments, idCommentToReply }) => {
+const AddComment = ({ isReplying }) => {
   const [commentAdded, setCommentAdded] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isReplying) {
       console.log(commentAdded);
-      setComments();
     }
   };
   return (

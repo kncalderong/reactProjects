@@ -4,6 +4,7 @@ import { Counter } from "./";
 import { FaReply } from "react-icons/fa";
 import { MdDelete, MdModeEdit } from "react-icons/md";
 import { AddComment } from "./";
+import { useAppContext } from "../context/appContext";
 
 const Comment = ({
   id,
@@ -14,10 +15,10 @@ const Comment = ({
   replies,
   currentUser,
   replyingTo,
-  setComments,
 }) => {
   const [isReplying, setIsReplying] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
+  const { comments, setComments } = useAppContext();
 
   let isFromCurrentUser = currentUser.username === user.username ? true : false;
 
@@ -28,11 +29,28 @@ const Comment = ({
     setIsReplying(!isReplying);
   };
 
+  // const handleScore = (action, idComment) => {
+  //   let currentComment = comments.find((item) => item.id === idComment);
+  //   let indexCurrent = comments.indexOf(currentComment);
+  //   if (action === "+") {
+  //     currentComment.score += 1;
+  //   } else if (action === "-") {
+  //     currentComment.score -= 1;
+  //   }
+  //   setComments((prevComments) => {
+  //     prevComments[indexCurrent] = currentComment;
+  //     return prevComments;
+  //   });
+  //   console.log(currentComment);
+  //   console.log(indexCurrent);
+  //   console.log(comments);
+  // };
+
   let marginBottom = isReplying ? "5px" : "15px";
   return (
     <>
       <Wrapper marginBottom={marginBottom}>
-        <Counter score={score} />
+        <Counter score={score} idComment={id} />
         <div className="content">
           <div className="comment-head">
             <div className="user-info">
@@ -94,13 +112,7 @@ const Comment = ({
           )}
         </div>
       </Wrapper>
-      {isReplying && (
-        <AddComment
-          isReplying={isReplying}
-          setComments={setComments}
-          idCommentToReply={id}
-        />
-      )}
+      {isReplying && <AddComment isReplying={isReplying} />}
       {replies && (
         <div className="child-comments-container">
           <div className="line"></div>

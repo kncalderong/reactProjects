@@ -2,15 +2,27 @@ import React from "react";
 import styled from "styled-components";
 import { GoPlus } from "react-icons/go";
 import { HiMinus } from "react-icons/hi";
+import { useAppContext } from "../context/appContext";
 
-const Counter = ({ score }) => {
+const Counter = ({ score, idComment }) => {
+  const { handleScore } = useAppContext();
   return (
     <Wrapper>
-      <div className="symbol-container">
+      <div
+        className="symbol-container"
+        onClick={() => {
+          handleScore("+", idComment);
+        }}
+      >
         <GoPlus />
       </div>
       <div className="count">{score}</div>
-      <div className="symbol-container">
+      <div
+        className="symbol-container"
+        onClick={() => {
+          handleScore("-", idComment);
+        }}
+      >
         <HiMinus />
       </div>
     </Wrapper>

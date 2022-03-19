@@ -1,27 +1,21 @@
-import { useState } from "react";
 import styled from "styled-components";
 import { Comment, AddComment } from "./components";
-import data from "./assets/data.json";
+import { useAppContext } from "./context/appContext";
 
 function App() {
-  // const [currentUser, setCurrentUser] = useState(data.currentUser)
-  const [comments, setComments] = useState(data.comments);
+  const { comments, currentUser } = useAppContext();
+
   return (
     <Wrapper>
       <div className="main-container">
         <div className="comments-container">
-          {comments.map((item, idx) => {
+          {comments.map((item) => {
             return (
-              <Comment
-                key={item.id}
-                {...item}
-                currentUser={data.currentUser}
-                setComments={setComments}
-              />
+              <Comment key={item.id} {...item} currentUser={currentUser} />
             );
           })}
         </div>
-        {/* {console.log("this is rendered one more time")} */}
+        {console.log("this is rendered one more time")}
         <AddComment />
       </div>
     </Wrapper>
