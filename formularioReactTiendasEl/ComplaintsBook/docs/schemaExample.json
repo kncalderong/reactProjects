@@ -1,0 +1,163 @@
+{
+    "title": "libro reclamaciones peru",
+    "properties": {
+        "time": {
+            "type": "string"
+        },
+        "correlativeNumber": {
+            "type": "string"
+        },
+        "storeName": {
+            "type": "string"
+        },
+        "storeCode": {
+            "type": "string"
+        },
+        "storeAddress": {
+            "type": "string"
+        },
+        "rucStoreNumber": {
+            "type": "string"
+        },
+        "name": {
+            "type": "string",
+            "maxLength": 100
+        },
+        "lastName": {
+            "type": "string",
+            "maxLength": 100
+        },
+        "documentType": {
+            "type": "string",
+            "default": "DNI",
+            "enum": ["DNI", "carnet de extranjeria"]
+        },
+        "documentNumber": {
+            "type": "number"
+        },
+        "departamento": {
+            "type": "string"
+        },
+        "provincia": {
+            "type": "string"
+        },
+        "distrito": {
+            "type": "string"
+        },
+        "address": {
+            "type": "string"
+        },
+        "phone": {
+            "type": "number"
+        },
+        "email": {
+            "type": "string",
+            "format": "email"
+        },
+        "representative": {
+            "type": "string",
+            "maxLength": 100
+        },
+        "requestDetails": {
+            "type": "string",
+            "default": "producto",
+            "enum": ["producto", "servicio"]
+        },
+        "requestNumber": {
+            "type": ["number", "null"]
+        },
+        "requestPrice": {
+            "type": ["number", "null"]
+        },
+        "claimDetails": {
+            "type": "string",
+            "default": "reclamo",
+            "enum": ["reclamo", "queja"]
+        },
+        "claimDescription": {
+            "type": "string",
+            "maxLength": 1200
+        },
+        "clientOrder": {
+            "type": "string",
+            "maxLength": 300
+        },
+        "providerActions": {
+            "type": "string",
+            "maxLength": 300
+        }
+    },
+    "required": [
+        "time",
+        "correlativeNumber",
+        "storeName",
+        "storeCode",
+        "storeAddress",
+        "rucStoreNumber",
+        "name",
+        "lastName",
+        "documentType",
+        "documentNumber",
+        "departamento",
+        "provincia",
+        "distrito",
+        "address",
+        "phone",
+        "email",
+        "claimDescription",
+        "clientOrder",
+        "providerActions"
+    ],
+    "v-default-fields": [
+        "time",
+        "correlativeNumber",
+        "storeName",
+        "storeCode",
+        "storeAddress",
+        "rucStoreNumber",
+        "name",
+        "lastName",
+        "documentType",
+        "documentNumber",
+        "departamento",
+        "provincia",
+        "distrito",
+        "address",
+        "phone",
+        "email",
+        "claimDescription",
+        "clientOrder",
+        "providerActions"
+    ],
+    "v-cache": false,
+    "v-security": {
+        "publicJsonSchema": true,
+        "allowGetAll": true,
+        "publicWrite": [
+            "time",
+            "correlativeNumber",
+            "storeName",
+            "storeCode",
+            "storeAddress",
+            "rucStoreNumber",
+            "name",
+            "lastName",
+            "documentType",
+            "documentNumber",
+            "departamento",
+            "provincia",
+            "distrito",
+            "address",
+            "phone",
+            "email",
+            "representative",
+            "requestDetails",
+            "requestNumber",
+            "requestPrice",
+            "claimDetails",
+            "claimDescription",
+            "clientOrder",
+            "providerActions"
+        ]
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "admin/editor.count-down.title": "Cuentra regresiva",
+    "admin/editor.count-down.description": "Cuenta cuanto falta para una fecha",
+    "admin/editor.count-down.label.date": "Fecha del evento",
+    "admin/editor.count-down.label.sizeSegment": "Tamaño del segmento",
+    "admin/editor.count-down.label.colorSeconds": "Color para los segundos",
+    "admin/editor.count-down.label.colorMinutes": "Color para los minutos",
+    "admin/editor.count-down.label.colorHours": "Color para los horas",
+    "admin/editor.count-down.label.colorDays": "Color para los dias",
+    "store/count-down.label.days": "Dias",
+    "store/count-down.label.hours": "Horas",
+    "store/count-down.label.minutes": "Minutos",
+    "store/count-down.label.seconds": "Segundos"
+}

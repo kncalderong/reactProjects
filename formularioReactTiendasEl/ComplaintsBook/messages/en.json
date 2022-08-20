@@ -1,0 +1,14 @@
+{
+    "admin/editor.count-down.title": "Countdown",
+    "admin/editor.count-down.description": "Count how far down a date",
+    "admin/editor.count-down.label.date": "Event Date",
+    "admin/editor.count-down.label.sizeSegment": "Segment size",
+    "admin/editor.count-down.label.colorSeconds": "Color for seconds",
+    "admin/editor.count-down.label.colorMinutes": "Color for minutes",
+    "admin/editor.count-down.label.colorHours": "Color for hours",
+    "admin/editor.count-down.label.colorDays": "Color for days",
+    "store/count-down.label.days": "Days",
+    "store/count-down.label.hours": "Hours",
+    "store/count-down.label.minutes": "Minutes",
+    "store/count-down.label.seconds": "Seconds"
+}

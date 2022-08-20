@@ -1,0 +1,14 @@
+{
+    "admin/editor.count-down.title": "admin/editor.count-down.title",
+    "admin/editor.count-down.description": "admin/editor.count-down.description",
+    "admin/editor.count-down.label.date": "admin/editor.count-down.label.date",
+    "admin/editor.count-down.label.sizeSegment": "admin/editor.count-down.label.sizeSegment",
+    "admin/editor.count-down.label.colorSeconds": "admin/editor.count-down.label.colorSeconds",
+    "admin/editor.count-down.label.colorMinutes": "admin/editor.count-down.label.colorMinutes",
+    "admin/editor.count-down.label.colorHours": "admin/editor.count-down.label.colorHours",
+    "admin/editor.count-down.label.colorDays": "admin/editor.count-down.label.colorDays",
+    "store/count-down.label.days": "store/count-down.label.days",
+    "store/count-down.label.hours": "store/count-down.label.hours",
+    "store/count-down.label.minutes": "store/count-down.label.minutes",
+    "store/count-down.label.seconds": "store/count-down.label.seconds"
+}

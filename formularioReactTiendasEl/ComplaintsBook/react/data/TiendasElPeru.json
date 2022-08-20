@@ -1,0 +1,232 @@
+[
+    {
+        "name": "TIENDA EL ON-LINE",
+        "cod": "V-000",
+        "address": "TIENDA EL ON-LINE"
+    },
+    {
+        "name": "EL C.C. EL POLO",
+        "cod": "V-001",
+        "address": "AV. EL POLO NRO. 740 INT. 125 URB. EL POLO LIMA LIMA SANTIAGO DE SURCO"
+    },
+    {
+        "name": "EL JOCKEY PLAZA",
+        "cod": "V-002",
+        "address": "AV. JAVIER PRADO ESTE NRO. 4200 INT. 110A PLAZA CIELO LIMA LIMA SANTIAGO DE SURCO"
+    },
+    {
+        "name": "EL LARCO",
+        "cod": "V-003",
+        "address": "AV. LARCO NRO. 620 LIMA LIMA MIRAFLORES"
+    },
+    {
+        "name": "EL SAN BORJA",
+        "cod": "V-004",
+        "address": "CAL. MORELLI NRO. 121 INT. 125 LIMA LIMA SAN BORJA"
+    },
+    {
+        "name": "EL SANTA ANITA 2",
+        "cod": "V-005",
+        "address": "AV. CARRETERA CENTRAL NRO. 111 (TDA. C2001 -B2007 Y B2009) LIMA LIMA SANTA ANITA"
+    },
+    {
+        "name": "EL GRAN CHIMU",
+        "cod": "V-006",
+        "address": "AV. GRAN CHIMU NRO. 482 URB. ZARATE (482-484) LIMA LIMA SAN JUAN DE LURIGANCHO (TDA.134) LIMA LIMA CHORRILLOS"
+    },
+    {
+        "name": "EL CAJAMARCA",
+        "cod": "V-007",
+        "address": "JR. SOR MANUELA GIL NRO. 151 URB. SAN CARLOS (INTERIOR 223) CAJAMARCA CAJAMARCA CAJAMARCA"
+    },
+    {
+        "name": "EL CHICLAYO",
+        "cod": "V-008",
+        "address": "CAL. SAN JOSE NRO. 562 URB. CHICLAYO (568) LAMBAYEQUE CHICLAYO CHICLAYO"
+    },
+    {
+        "name": "EL CHICLAYO REAL",
+        "cod": "V-009",
+        "address": "CAL. MARISCAL ANDRES A.CACERES NRO. 222 INT. 174 (LOCAL 174-175) LAMBAYEQUE CHICLAYO CHICLAYO"
+    },
+    {
+        "name": "EL TRUJILLO GAMARRA",
+        "cod": "V-010",
+        "address": "JR. GAMARRA N° 649,DISTRITO, PROV. Y DPTO. DE TRUJILLO"
+    },
+    {
+        "name": "EL TRUJILLO MALL",
+        "cod": "V-011",
+        "address": "AV. AMERICA OESTE NRO. 750 INT. 1111 URB. EL INGENIO (CENTRO COMERCIAL MALL PLAZA) LA LIBERTAD TRUJILLO TRUJILLO"
+    },
+    {
+        "name": "EL CHIMBOTE",
+        "cod": "V-012",
+        "address": "AV. PARDO NRO. 320 CASCO URBANO CENTRAL (NUEMROS 320 - 324) ANCASH SANTA CHIMBOTE"
+    },
+    {
+        "name": "EL HUARAZ",
+        "cod": "V-013",
+        "address": "AV. TORIBIO LUZURIAGA NRO. 864 (--) ANCASH HUARAZ HUARAZ"
+    },
+    {
+        "name": "EL SJ DE MIRAFLORES",
+        "cod": "V-014",
+        "address": "AV. SAN JUAN NRO. 1080 URB. SAN JUAN DE MIRAFLORES LIMA LIMA SAN JUAN DE MIRAFLORES"
+    },
+    {
+        "name": "EL V.EL SALVADOR",
+        "cod": "V-015",
+        "address": "MZA. H LOTE. 8 GRU. RESIDENCIAL 15,SECTOR 2DO LIMA LIMA VILLA EL SALVADOR"
+    },
+    {
+        "name": "EL ABANCAY",
+        "cod": "V-016",
+        "address": "AV. ABANCAY NRO. 379 LIMA LIMA LIMA"
+    },
+    {
+        "name": "EL EMANCIPACION",
+        "cod": "V-017",
+        "address": "AV. EMANCIP. NRO. 222 (NUMEROS 222-224) LIMA LIMA LIMA"
+    },
+    {
+        "name": "EL JR. DE LA UNION",
+        "cod": "V-018",
+        "address": "JR. DE LA UNION NRO. 455 LIMA LIMA LIMA"
+    },
+    {
+        "name": "EL MEGAPLAZA 2",
+        "cod": "V-019",
+        "address": "AV. ALFREDO MENDIOLA NRO. 3698 INT. 80 (AV INDUSTRIAL 3513-3515-3517, L80-L81) LIMA LIMA INDEPENDENCIA"
+    },
+    {
+        "name": "EL PLZ NORTE",
+        "cod": "V-020",
+        "address": "AV. ALFREDO MENDIOLA NRO. 1400 INT. S147 (S149,151.153) LIMA LIMA INDEPENDENCIA"
+    },
+    {
+        "name": "EL IQUITOS",
+        "cod": "V-021",
+        "address": "JR. PROSPERO NRO. 930 LORETO - MAYNAS - IQUITOS"
+    },
+    {
+        "name": "EL AYACUCHO",
+        "cod": "V-022",
+        "address": "JR. 9 DE DICIEMBRE 382 - NRO. 386 AYACUCHO HUAMANGA AYACUCHO"
+    },
+    {
+        "name": "EL PUCALLPA",
+        "cod": "V-023",
+        "address": "JR. TARAPACA NRO. 697 UCAYALI CORONEL PORTILLO CALLERIA"
+    },
+    {
+        "name": "EL HUANUCO",
+        "cod": "V-024",
+        "address": "JR. GENERAL PRADO NRO. 826 HUANUCO HUANUCO HUANUCO"
+    },
+    {
+        "name": "EL HUACHO",
+        "cod": "V-025",
+        "address": "CAL. SAENZ PEÑA NRO. 247 LOTE. 1 LIMA HUAURA HUACHO"
+    },
+    {
+        "name": "EL SULLANA",
+        "cod": "V-026",
+        "address": "CAL. SAN MARTIN NRO. 879 (1 CUADRA BANCO CONTINENTAL) PIURA SULLANA SULLANA"
+    },
+    {
+        "name": "EL TUMBES",
+        "cod": "V-027",
+        "address": "PASEO LOS LIBERTADORES NRO. 260 (ANTES CALLE BOLIVAR 225-226 TUMBES) TUMBES TUMBES TUMBES"
+    },
+    {
+        "name": "EL MAGDALENA - CASTILLA",
+        "cod": "V-028",
+        "address": "JR. CASTILLA NRO. 575 URB. MAGDALENA DEL MAR (ENTRE JR.CASTILLA Y BOLOGNSI 575,609) LIMA LIMA MAGDALENA DEL MAR"
+    },
+    {
+        "name": "EL JESUS MARIA",
+        "cod": "V-029",
+        "address": "AV. A.MARQUEZ NRO. 1348 LIMA LIMA JESUS MARIA"
+    },
+    {
+        "name": "EL SAN MIGUEL",
+        "cod": "V-030",
+        "address": "AV. LA MARINA CON UNIVERSITAR NRO. S/N INT. 063 (CC.CC.PLAZA SAN MIGUEL TDA 063-064) LIMA LIMA SAN MIGUEL"
+    },
+    {
+        "name": "EL ARAUCO",
+        "cod": "V-031",
+        "address": "AV. CORPAC 142 NIV 2 LOC 202 Y 204 REF OUTLET AEROPUERT O JORGE CHAVEZ SCT 0198 MZT 004"
+    },
+    {
+        "name": "EL BELLAVISTA",
+        "cod": "V-032",
+        "address": "AV. OSCAR R. BENAVIDES NRO. 3866 URB. EL AGUILAR (INT.B-1023-B-1025C.C MALL AVENTURA PLAZA) PROV. CONST. DEL CALLAO PROV. CONST. DEL CALLAO BELLAVISTA"
+    },
+    {
+        "name": "EL CUSCO",
+        "cod": "V-033",
+        "address": "CAL. AYACUCHO NRO. 248 CUSCO CUSCO CUSCO"
+    },
+    {
+        "name": "EL ILO",
+        "cod": "V-034",
+        "address": "JR. MOQUEGUA NRO. 725 (JR. MOQUEGUA 725-1) MOQUEGUA ILO ILO"
+    },
+    {
+        "name": "EL JULIACA",
+        "cod": "V-035",
+        "address": "JR. TUMBES NRO. 391 INT. 157 (C.C. REAL PZA JULIACA LC 159,161,163) PUNO SAN ROMAN JULIACA"
+    },
+    {
+        "name": "EL REAL CUSCO",
+        "cod": "V-036",
+        "address": "AV. LA CULTURA INT 221 REF CC REAL PLAZA TDA LC221 SCT 2351 MZT 004 UR UR UR MAGISTERIO"
+    },
+    {
+        "name": "EL TACNA",
+        "cod": "V-037",
+        "address": "AV. SAN MARTIN NRO. 283 TACNA TACNA TACNA"
+    },
+    {
+        "name": "EL CHINCHA",
+        "cod": "V-038",
+        "address": "AV. MARISCAL BENAVIDES NRO. 260 ICA CHINCHA CHINCHA ALTA"
+    },
+    {
+        "name": "EL ICA CENTRO",
+        "cod": "V-039",
+        "address": "CAL LIMA 255 REF 261 SCT 3492 MZT 009 UR UR CERCADO DE ICA"
+    },
+    {
+        "name": "EL ICA QUINDE",
+        "cod": "V-040",
+        "address": "AV. LOS MAESTROS NRO. 206 INT. 110- FND. SAN JOSE (INT. 110-112-114 Y 116 KM. 303 - 304) ICA ICA ICA"
+    },
+    {
+        "name": "EL PIURA CENTRO",
+        "cod": "V-041",
+        "address": "JR. CUZCO NRO. 768 (ESQUINA JR CUZCO CON HUANCAVELICA)PIURA - PIURA - PIURA"
+    },
+    {
+        "name": "EL PIURA REAL",
+        "cod": "V-042",
+        "address": "AV. SANCHEZ CERRO INT. 144 LOTE. 234 (SUB LOTE 234 - 239A) PIURA PIURA PIURA"
+    },
+    {
+        "name": "EL HUANCAYO",
+        "cod": "V-043",
+        "address": "CAL. REAL NRO. 630 (TAMBIEN N 632,634,636 .) JUNIN HUANCAYO HUANCAYO"
+    },
+    {
+        "name": "EL AREQUIPA",
+        "cod": "V-044",
+        "address": "CAL. MERCADERES NRO. 133 CERCADO (NUMERO 135) AREQUIPA AREQUIPA AREQUIPA"
+    },
+    {
+        "name": "EL AREQUIPA MALL",
+        "cod": "V-045",
+        "address": "AV. PORONGOCHE NRO. 500 (A-2004,A-2006,A-2008 Y A-2010) AREQUIPA AREQUIPA PAUCARPATA"
+    }
+]
