@@ -1,4 +1,5 @@
 import Comment from '../models/Comment.js'
+import User from '../models/User.js';
 import { StatusCodes } from 'http-status-codes';
 import {
   BadRequestError,
@@ -69,7 +70,6 @@ const updateComment = async (req, res) => {
 }
 
 //delete comment
-
 const deleteComment = async (req, res) => {
   const { id: commentId } = req.params
   const comment = await Comment.findOne({ _id: commentId })
@@ -85,5 +85,47 @@ const deleteComment = async (req, res) => {
   })
 }
 
-export { createComment, updateComment, deleteComment }
+//get all comments
+const getAllComments = async (req, res) => {
+  const { sort,  search } = req.query;
+  
+  const queryObject = {};
+  
+  if (search) {
+    queryObject.text = { $regex: search, $options: 'i' };
+  }
+  
+  //to populate with users Info from another collection of documents 'User'
+  let result = Comment.find(queryObject).populate('user').populate({
+    path: 'answers',
+    populate: { path: 'user'}
+  })
+  
+  //To sort
+  if (sort === 'latest') {
+    result = result.sort('-createdAt');
+  }
+  if (sort === 'oldest') {
+    result = result.sort('createdAt');
+  }
+  
+  //Pagination
+  const page = Number(req.query.page) || 1;
+  const limit = Number(req.query.limit) || 10;
+  const skip = (page - 1) * limit;
+  
+  result = result.skip(skip).limit(limit);
+  
+  const comments = await result
+  const totalComments = await Comment.countDocuments(queryObject);
+  const numOfPages = Math.ceil(totalComments / limit);
+  
+  res.status(StatusCodes.OK).json({
+    comments,
+    totalComments,
+    numOfPages
+  })
+}
+
+export { createComment, updateComment, deleteComment, getAllComments }
 

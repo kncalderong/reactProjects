@@ -3,6 +3,9 @@ const app = express();
 import dotenv from 'dotenv';
 dotenv.config();
 
+import Comment from './models/Comment.js'
+import User from  './models/User.js'
+
 //to handle errors throught middleware
 import 'express-async-errors'
 
