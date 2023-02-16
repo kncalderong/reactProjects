@@ -22,8 +22,8 @@ import errorHandlerMiddleware from './middleware/error-handler.js';
 app.use(express.json());
 app.use('/api/v1/comments', commentsRouter);
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
+app.get('/api/v1', (req, res) => {
+  res.json({msg: 'hello world sdfasdf'})
 })
 
 app.use(notFoundMiddleware);
