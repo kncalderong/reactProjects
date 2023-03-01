@@ -43,10 +43,10 @@ class App extends React.Component {
     super(props);
     this.state = {
       breakLenght: 5,
-      sessionLenght: 25,
+      sessionLenght: 30,
       timerState: "stopped",
       timerType: "session",
-      timer: 1500,
+      timer: 1800,
       intervalID: "",
       round: 1,
       alarmColor: { color: "black" },
@@ -194,10 +194,10 @@ class App extends React.Component {
     const target = e.currentTarget.style;
     this.setState({
       breakLenght: 5,
-      sessionLenght: 25,
+      sessionLenght: 30,
       timerState: "stopped",
       timerType: "session",
-      timer: 1500,
+      timer: 1800,
       intervalID: "",
       round: 1,
       alarmColor: { color: "black" },
